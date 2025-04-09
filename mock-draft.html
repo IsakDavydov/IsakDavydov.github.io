@@ -13,26 +13,17 @@
             <h1 class="text-2xl font-bold">NFL Draft Hub</h1>
             <ul class="flex space-x-6">
                 <li><a href="index.html" class="hover:text-blue-200">Player Rankings</a></li>
-                <li><a href="mock-drafts.html" class="hover:text-blue-200">Mock Drafts</a></li>
+                <li><a href="mock-draft.html" class="hover:text-blue-200">Mock Drafts</a></li>
                 <li><a href="team-picks.html" class="hover:text-blue-200">Team Picks</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container mx-auto p-4">
-        <h2 class="text-3xl font-bold mb-6">Mock Drafts</h2>
-        
-        <div class="mb-4">
-            <label for="round-select" class="mr-2">Select Round:</label>
-            <select id="round-select" class="border rounded p-2">
-                <option value="1">Round 1</option>
-                <option value="2">Round 2</option>
-                <option value="3">Round 3</option>
-                <option value="4">Round 4</option>
-                <option value="5">Round 5</option>
-                <option value="6">Round 6</option>
-                <option value="7">Round 7</option>
-            </select>
+        <div class="mb-6">
+            <h2 class="text-3xl font-bold" id="mock-draft-title"></h2>
+            <p class="text-gray-600" id="mock-draft-author"></p>
+            <p class="text-gray-600" id="mock-draft-date"></p>
         </div>
 
         <div class="overflow-x-auto">
@@ -44,6 +35,7 @@
                         <th class="px-6 py-3 text-left">Player</th>
                         <th class="px-6 py-3 text-left">Position</th>
                         <th class="px-6 py-3 text-left">School</th>
+                        <th class="px-6 py-3 text-left">Explanation</th>
                     </tr>
                 </thead>
                 <tbody id="mock-draft-body" class="divide-y divide-gray-200">
@@ -53,6 +45,37 @@
         </div>
     </main>
 
-    <script src="scripts.js"></script>
+    <script>
+        // Load mock draft data
+        fetch('data/mock-drafts.json')
+            .then(response => response.json())
+            .then(data => {
+                const mockDraft = data.mockDrafts[0];
+                
+                // Set mock draft details
+                document.getElementById('mock-draft-title').textContent = mockDraft.name;
+                document.getElementById('mock-draft-author').textContent = `By ${mockDraft.author}`;
+                document.getElementById('mock-draft-date').textContent = `Published: ${mockDraft.date}`;
+                
+                // Populate mock draft table
+                const tableBody = document.getElementById('mock-draft-body');
+                mockDraft.picks.forEach((pick, index) => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-gray-50';
+                    
+                    row.innerHTML = `
+                        <td class="px-6 py-4">${index + 1}</td>
+                        <td class="px-6 py-4">${pick.team}</td>
+                        <td class="px-6 py-4">${pick.player}</td>
+                        <td class="px-6 py-4">${pick.position}</td>
+                        <td class="px-6 py-4">${pick.college}</td>
+                        <td class="px-6 py-4">${pick.explanation}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error loading mock draft data:', error));
+    </script>
 </body>
 </html> 
