@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Draft Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-900 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">NFL Draft Hub</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-blue-200">Player Rankings</a></li>
+                <li><a href="mock-drafts.html" class="hover:text-blue-200">Mock Drafts</a></li>
+                <li><a href="team-picks.html" class="hover:text-blue-200">Team Picks</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <h2 class="text-3xl font-bold mb-6">Player Rankings</h2>
+        
+        <div class="mb-4">
+            <label for="position-filter" class="mr-2">Filter by Position:</label>
+            <select id="position-filter" class="border rounded p-2">
+                <option value="all">All Positions</option>
+                <option value="QB">Quarterback</option>
+                <option value="RB">Running Back</option>
+                <option value="WR">Wide Receiver</option>
+                <option value="TE">Tight End</option>
+                <option value="OL">Offensive Line</option>
+                <option value="DL">Defensive Line</option>
+                <option value="LB">Linebacker</option>
+                <option value="DB">Defensive Back</option>
+            </select>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="px-6 py-3 text-left cursor-pointer" onclick="sortTable(0)">Rank</th>
+                        <th class="px-6 py-3 text-left cursor-pointer" onclick="sortTable(1)">Name</th>
+                        <th class="px-6 py-3 text-left cursor-pointer" onclick="sortTable(2)">Position</th>
+                        <th class="px-6 py-3 text-left cursor-pointer" onclick="sortTable(3)">School</th>
+                    </tr>
+                </thead>
+                <tbody id="player-table-body" class="divide-y divide-gray-200">
+                    <!-- Player data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 
