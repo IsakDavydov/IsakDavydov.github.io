@@ -8,18 +8,7 @@
       "height": "6'1\"",
       "weight": "185 lbs",
       "age": 20,
-      "stats": {
-        "receivingYards": 721,
-        "receivingTDs": 5,
-        "tackles": 30,
-        "interceptions": 3,
-        "passBreakups": 5
-      },
-      "highlights": [
-        "Two-way player (WR/CB)",
-        "2023 First-team All-Pac-12",
-        "Led team in receiving yards and interceptions"
-      ]
+      "description": "Elite two-way player who excels at both wide receiver and cornerback. Known for his exceptional athleticism and playmaking ability on both sides of the ball. 2024 First-team All-Pac-12 selection."
     },
     {
       "id": 2,
@@ -29,17 +18,7 @@
       "height": "6'3\"",
       "weight": "250 lbs",
       "age": 20,
-      "stats": {
-        "tackles": 48,
-        "sacks": 4.5,
-        "tacklesForLoss": 10.5,
-        "forcedFumbles": 2
-      },
-      "highlights": [
-        "2023 Second-team All-Big Ten",
-        "Led team in tackles for loss",
-        "Freshman All-American in 2022"
-      ]
+      "description": "Explosive edge rusher with excellent length and athleticism. 2024 Second-team All-Big Ten selection. Known for his ability to disrupt plays in the backfield and set the edge against the run."
     },
     {
       "id": 3,
@@ -47,19 +26,79 @@
       "position": "DT",
       "college": "Michigan",
       "height": "6'3\"",
-      "weight": 318,
+      "weight": "318 lbs",
       "age": 20,
-      "stats": {
-        "tackles": 36,
-        "sacks": 3.5,
-        "tacklesForLoss": 7.5,
-        "quarterbackHurries": 12
-      },
-      "highlights": [
-        "2023 First-team All-Big Ten",
-        "National Champion",
-        "Key contributor to nation's top defense"
-      ]
+      "description": "Dominant interior defensive lineman with exceptional strength and technique. 2024 First-team All-Big Ten selection and key contributor to Michigan's national championship defense."
+    },
+    {
+      "id": 4,
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "college": "Boise State",
+      "height": "5'9\"",
+      "weight": "210 lbs",
+      "age": 20,
+      "description": "Dynamic running back with excellent vision and breakaway speed. 2024 First-team All-Mountain West selection. Known for his ability to contribute in both the running and passing game."
+    },
+    {
+      "id": 5,
+      "name": "Cam Ward",
+      "position": "QB",
+      "college": "Miami",
+      "height": "6'2\"",
+      "weight": "225 lbs",
+      "age": 21,
+      "description": "Strong-armed quarterback with excellent mobility and decision-making. 2024 Second-team All-Pac-12 selection. Transferred to Miami after a successful stint at Washington State."
+    },
+    {
+      "id": 6,
+      "name": "Will Johnson",
+      "position": "CB",
+      "college": "Michigan",
+      "height": "6'2\"",
+      "weight": "200 lbs",
+      "age": 20,
+      "description": "Shutdown corner with ideal size and athleticism. 2024 First-team All-Big Ten selection and Rose Bowl Defensive MVP. Known for his ability to match up with opposing teams' top receivers."
+    },
+    {
+      "id": 7,
+      "name": "Will Campbell",
+      "position": "OT",
+      "college": "LSU",
+      "height": "6'6\"",
+      "weight": "320 lbs",
+      "age": 20,
+      "description": "Prototype left tackle with excellent size and athleticism. 2024 First-team All-SEC selection. Known for his strong pass protection and physical run blocking."
+    },
+    {
+      "id": 8,
+      "name": "Shedeur Sanders",
+      "position": "QB",
+      "college": "Colorado",
+      "height": "6'2\"",
+      "weight": "215 lbs",
+      "age": 21,
+      "description": "Accurate passer with excellent pocket presence and leadership skills. 2024 First-team All-Pac-12 selection. Set Colorado's single-season passing record in 2024."
+    },
+    {
+      "id": 9,
+      "name": "Mykel Williams",
+      "position": "EDGE",
+      "college": "Georgia",
+      "height": "6'5\"",
+      "weight": "265 lbs",
+      "age": 20,
+      "description": "Versatile defensive lineman with excellent length and power. 2024 Second-team All-SEC selection. Known for his ability to play multiple positions along the defensive line."
+    },
+    {
+      "id": 10,
+      "name": "Tyler Warren",
+      "position": "TE",
+      "college": "Penn State",
+      "height": "6'6\"",
+      "weight": "255 lbs",
+      "age": 21,
+      "description": "Complete tight end with excellent size and athleticism. 2024 Second-team All-Big Ten selection. Known for his ability to contribute as both a receiver and blocker."
     }
   ]
 } 
