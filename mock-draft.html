@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock Drafts - Saks Draft Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
 </head>
 <body class="bg-gray-100">
     <nav class="bg-blue-900 text-white p-4">
@@ -93,16 +93,33 @@
                         const teamLogo = pick.team.toLowerCase().replace(/\s+/g, '-');
                         const collegeLogo = pick.college.toLowerCase().replace(/\s+/g, '-');
                         
+                        // Create image elements with error handling
+                        const teamImg = document.createElement('img');
+                        teamImg.src = `https://isakdavydov.github.io/images/logos/nfl/${teamLogo}.png`;
+                        teamImg.alt = `${pick.team} logo`;
+                        teamImg.className = 'w-8 h-8 mr-2';
+                        teamImg.onerror = function() {
+                            this.style.display = 'none';
+                        };
+                        
+                        const collegeImg = document.createElement('img');
+                        collegeImg.src = `https://isakdavydov.github.io/images/logos/college/${collegeLogo}.png`;
+                        collegeImg.alt = `${pick.college} logo`;
+                        collegeImg.className = 'w-8 h-8 mr-2';
+                        collegeImg.onerror = function() {
+                            this.style.display = 'none';
+                        };
+                        
                         row.innerHTML = `
                             <td class="px-6 py-4">${index + 1}</td>
                             <td class="px-6 py-4 flex items-center">
-                                <img src="https://isakdavydov.github.io/images/logos/nfl/${teamLogo}.png" alt="${pick.team} logo" class="w-8 h-8 mr-2">
+                                ${teamImg.outerHTML}
                                 ${pick.team}
                             </td>
                             <td class="px-6 py-4">${pick.player}</td>
                             <td class="px-6 py-4">${pick.position}</td>
                             <td class="px-6 py-4 flex items-center">
-                                <img src="https://isakdavydov.github.io/images/logos/college/${collegeLogo}.png" alt="${pick.college} logo" class="w-8 h-8 mr-2">
+                                ${collegeImg.outerHTML}
                                 ${pick.college}
                             </td>
                             <td class="px-6 py-4">${pick.explanation}</td>

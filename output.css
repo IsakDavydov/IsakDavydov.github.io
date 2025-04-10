@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.bg-blue-900 {
+    background-color: #1e3a8a;
+}
+.text-white {
+    color: #ffffff;
+}
+.hover\:text-blue-200:hover {
+    color: #bfdbfe;
+}
+.bg-gray-100 {
+    background-color: #f3f4f6;
+}
+.bg-white {
+    background-color: #ffffff;
+}
+.bg-gray-800 {
+    background-color: #1f2937;
+}
+.text-gray-600 {
+    color: #4b5563;
+}
+.text-red-500 {
+    color: #ef4444;
+}
+.hover\:bg-gray-50:hover {
+    background-color: #f9fafb;
+}
+.divide-gray-200 > * + * {
+    border-color: #e5e7eb;
+}
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.w-8 {
+    width: 2rem;
+}
+.h-8 {
+    height: 2rem;
+}
+.mr-2 {
+    margin-right: 0.5rem;
+}
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.p-4 {
+    padding: 1rem;
+}
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+.font-bold {
+    font-weight: 700;
+}
+.flex {
+    display: flex;
+}
+.items-center {
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.space-x-6 > * + * {
+    margin-left: 1.5rem;
+}
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.overflow-x-auto {
+    overflow-x: auto;
+}
+.min-w-full {
+    min-width: 100%;
+}
+.text-left {
+    text-align: left;
+}
+.divide-y > * + * {
+    border-top-width: 1px;
+} 
