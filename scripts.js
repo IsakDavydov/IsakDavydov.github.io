@@ -1,5 +1,8 @@
 // Global variables
-let playerData = [];
+let players = [];
+let playerProfiles = [];
+let currentSortColumn = 0;
+let sortDirection = 1;
 let mockDraftData = {};
 let teamPicksData = [];
 
@@ -8,87 +11,169 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname.split('/').pop();
     
     if (currentPage === 'index.html' || currentPage === '') {
-        loadPlayerRankings();
-    } else if (currentPage === 'mock-drafts.html') {
-        loadMockDrafts();
+        loadPlayerData();
+    } else if (currentPage === 'mock-draft.html') {
+        loadMockDraft();
     } else if (currentPage === 'team-picks.html') {
         loadTeamPicks();
     }
 });
 
-// Player Rankings Page
-async function loadPlayerRankings() {
+// Load player data
+async function loadPlayerData() {
     try {
-        const response = await fetch('data/player-rankings.json');
-        const data = await response.json();
-        playerData = data.players;
-        renderPlayerTable();
-        
-        // Add event listener for position filter
-        document.getElementById('position-filter').addEventListener('change', filterPlayersByPosition);
+        const [rankingsResponse, profilesResponse] = await Promise.all([
+            fetch('data/player-rankings.json'),
+            fetch('data/player-profiles.json')
+        ]);
+
+        if (!rankingsResponse.ok || !profilesResponse.ok) {
+            throw new Error('Failed to load player data');
+        }
+
+        const rankingsData = await rankingsResponse.json();
+        const profilesData = await profilesResponse.json();
+
+        players = rankingsData.players;
+        playerProfiles = profilesData.players;
+
+        renderPlayers();
+        setupEventListeners();
     } catch (error) {
-        console.error('Error loading player rankings:', error);
+        console.error('Error loading player data:', error);
+        document.getElementById('player-table-body').innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center py-4 text-red-500">
+                    Error loading player data. Please try again later.
+                </td>
+            </tr>
+        `;
     }
 }
 
-function renderPlayerTable() {
+// Render players in the table
+function renderPlayers(filteredPlayers = players) {
     const tableBody = document.getElementById('player-table-body');
     tableBody.innerHTML = '';
-    
-    playerData.forEach(player => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="px-6 py-4">${player.rank}</td>
-            <td class="px-6 py-4">${player.name}</td>
-            <td class="px-6 py-4">${player.position}</td>
-            <td class="px-6 py-4">${player.school}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
 
-function filterPlayersByPosition() {
-    const selectedPosition = document.getElementById('position-filter').value;
-    const filteredPlayers = selectedPosition === 'all' 
-        ? playerData 
-        : playerData.filter(player => player.position === selectedPosition);
-    
-    const tableBody = document.getElementById('player-table-body');
-    tableBody.innerHTML = '';
-    
     filteredPlayers.forEach(player => {
         const row = document.createElement('tr');
+        row.className = 'hover:bg-gray-50';
         row.innerHTML = `
-            <td class="px-6 py-4">${player.rank}</td>
-            <td class="px-6 py-4">${player.name}</td>
-            <td class="px-6 py-4">${player.position}</td>
-            <td class="px-6 py-4">${player.school}</td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">${player.rank}</td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
+                <button onclick="showPlayerProfile('${player.name}')" class="text-blue-600 hover:text-blue-800 font-medium">
+                    ${player.name}
+                </button>
+            </td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">${player.position}</td>
+            <td class="px-4 sm:px-6 py-4 whitespace-nowrap">${player.school}</td>
         `;
         tableBody.appendChild(row);
     });
 }
 
-function sortTable(columnIndex) {
-    const tableBody = document.getElementById('player-table-body');
-    const rows = Array.from(tableBody.getElementsByTagName('tr'));
-    
-    rows.sort((a, b) => {
-        const aValue = a.cells[columnIndex].textContent;
-        const bValue = b.cells[columnIndex].textContent;
-        
-        if (columnIndex === 0) { // Rank column
-            return parseInt(aValue) - parseInt(bValue);
-        } else {
-            return aValue.localeCompare(bValue);
+// Show player profile modal
+function showPlayerProfile(playerName) {
+    const player = playerProfiles.find(p => p.name === playerName);
+    if (!player) {
+        console.error('Player profile not found:', playerName);
+        return;
+    }
+
+    // Update modal content
+    document.getElementById('modal-player-name').textContent = player.name;
+    document.getElementById('modal-height').textContent = player.height;
+    document.getElementById('modal-weight').textContent = player.weight;
+    document.getElementById('modal-age').textContent = player.age;
+
+    // Update stats
+    const statsContainer = document.getElementById('modal-stats');
+    statsContainer.innerHTML = '';
+    Object.entries(player.stats).forEach(([stat, value]) => {
+        const statElement = document.createElement('p');
+        statElement.innerHTML = `<span class="font-medium">${formatStatName(stat)}:</span> ${value}`;
+        statsContainer.appendChild(statElement);
+    });
+
+    // Update highlights
+    const highlightsContainer = document.getElementById('modal-highlights');
+    highlightsContainer.innerHTML = '';
+    player.highlights.forEach(highlight => {
+        const li = document.createElement('li');
+        li.textContent = highlight;
+        highlightsContainer.appendChild(li);
+    });
+
+    // Show modal
+    document.getElementById('player-modal').classList.remove('hidden');
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('player-modal').classList.add('hidden');
+}
+
+// Format stat names for display
+function formatStatName(stat) {
+    return stat
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, str => str.toUpperCase())
+        .replace('Yds', 'Yards')
+        .replace('Tds', 'TDs');
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Position filter
+    document.getElementById('position-filter').addEventListener('change', (e) => {
+        const position = e.target.value;
+        const filteredPlayers = position === 'all' 
+            ? players 
+            : players.filter(player => player.position === position);
+        renderPlayers(filteredPlayers);
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('player-modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('player-modal')) {
+            closeModal();
         }
     });
-    
-    tableBody.innerHTML = '';
-    rows.forEach(row => tableBody.appendChild(row));
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+}
+
+// Sort table
+function sortTable(columnIndex) {
+    if (currentSortColumn === columnIndex) {
+        sortDirection *= -1;
+    } else {
+        currentSortColumn = columnIndex;
+        sortDirection = 1;
+    }
+
+    players.sort((a, b) => {
+        const aValue = Object.values(a)[columnIndex];
+        const bValue = Object.values(b)[columnIndex];
+        
+        if (columnIndex === 0) { // Rank column
+            return (aValue - bValue) * sortDirection;
+        }
+        
+        return aValue.localeCompare(bValue) * sortDirection;
+    });
+
+    renderPlayers();
 }
 
 // Mock Drafts Page
-async function loadMockDrafts() {
+async function loadMockDraft() {
     try {
         const response = await fetch('data/mock-drafts.json');
         const data = await response.json();

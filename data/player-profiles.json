@@ -1,0 +1,65 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Travis Hunter",
+      "position": "ATHLETE",
+      "college": "Colorado",
+      "height": "6'1\"",
+      "weight": "185 lbs",
+      "age": 20,
+      "stats": {
+        "receivingYards": 721,
+        "receivingTDs": 5,
+        "tackles": 30,
+        "interceptions": 3,
+        "passBreakups": 5
+      },
+      "highlights": [
+        "Two-way player (WR/CB)",
+        "2023 First-team All-Pac-12",
+        "Led team in receiving yards and interceptions"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Abdul Carter",
+      "position": "EDGE",
+      "college": "Penn State",
+      "height": "6'3\"",
+      "weight": "250 lbs",
+      "age": 20,
+      "stats": {
+        "tackles": 48,
+        "sacks": 4.5,
+        "tacklesForLoss": 10.5,
+        "forcedFumbles": 2
+      },
+      "highlights": [
+        "2023 Second-team All-Big Ten",
+        "Led team in tackles for loss",
+        "Freshman All-American in 2022"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mason Graham",
+      "position": "DT",
+      "college": "Michigan",
+      "height": "6'3\"",
+      "weight": 318,
+      "age": 20,
+      "stats": {
+        "tackles": 36,
+        "sacks": 3.5,
+        "tacklesForLoss": 7.5,
+        "quarterbackHurries": 12
+      },
+      "highlights": [
+        "2023 First-team All-Big Ten",
+        "National Champion",
+        "Key contributor to nation's top defense"
+      ]
+    }
+  ]
+} 
