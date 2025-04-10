@@ -58,11 +58,11 @@
                 console.log('Data loaded:', data); // Debug log
                 
                 // Validate data structure
-                if (!data || !data.mockDraft || !Array.isArray(data.mockDraft) || data.mockDraft.length === 0) {
+                if (!data || !data.mockDrafts || !Array.isArray(data.mockDrafts) || data.mockDrafts.length === 0) {
                     throw new Error('Invalid mock draft data structure');
                 }
                 
-                const mockDraft = data.mockDraft[0];
+                const mockDraft = data.mockDrafts[0];
                 
                 // Set mock draft details
                 document.getElementById('mock-draft-title').textContent = mockDraft.name;
