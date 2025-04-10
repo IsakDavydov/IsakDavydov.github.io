@@ -87,23 +87,15 @@ function showPlayerProfile(playerName) {
     document.getElementById('modal-weight').textContent = player.weight;
     document.getElementById('modal-age').textContent = player.age;
 
-    // Update stats
+    // Update description
     const statsContainer = document.getElementById('modal-stats');
-    statsContainer.innerHTML = '';
-    Object.entries(player.stats).forEach(([stat, value]) => {
-        const statElement = document.createElement('p');
-        statElement.innerHTML = `<span class="font-medium">${formatStatName(stat)}:</span> ${value}`;
-        statsContainer.appendChild(statElement);
-    });
+    statsContainer.innerHTML = `
+        <p class="text-gray-700">${player.description}</p>
+    `;
 
-    // Update highlights
+    // Clear highlights section since we're using description now
     const highlightsContainer = document.getElementById('modal-highlights');
     highlightsContainer.innerHTML = '';
-    player.highlights.forEach(highlight => {
-        const li = document.createElement('li');
-        li.textContent = highlight;
-        highlightsContainer.appendChild(li);
-    });
 
     // Show modal
     document.getElementById('player-modal').classList.remove('hidden');
