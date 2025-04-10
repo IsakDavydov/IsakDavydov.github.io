@@ -10,7 +10,7 @@
 <body class="bg-gray-100">
     <nav class="bg-blue-900 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">NFL Draft Hub</h1>
+            <h1 class="text-2xl font-bold">Saks Draft Hub</h1>
             <ul class="flex space-x-6">
                 <li><a href="index.html" class="hover:text-blue-200">Player Rankings</a></li>
                 <li><a href="mock-draft.html" class="hover:text-blue-200">Mock Drafts</a></li>
@@ -47,22 +47,34 @@
 
     <script>
         // Load mock draft data
+        console.log('Starting to load mock draft data...');
         fetch('data/mock-draft.json')
             .then(response => {
+                console.log('Response status:', response.status);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
-                console.log('Data loaded:', data); // Debug log
+                console.log('Data loaded successfully:', data);
                 
                 // Validate data structure
-                if (!data || !data.mockDrafts || !Array.isArray(data.mockDrafts) || data.mockDrafts.length === 0) {
-                    throw new Error('Invalid mock draft data structure');
+                if (!data) {
+                    throw new Error('No data received');
+                }
+                if (!data.mockDrafts) {
+                    throw new Error('mockDrafts property missing');
+                }
+                if (!Array.isArray(data.mockDrafts)) {
+                    throw new Error('mockDrafts is not an array');
+                }
+                if (data.mockDrafts.length === 0) {
+                    throw new Error('No mock drafts found');
                 }
                 
                 const mockDraft = data.mockDrafts[0];
+                console.log('First mock draft:', mockDraft);
                 
                 // Set mock draft details
                 document.getElementById('mock-draft-title').textContent = mockDraft.name;
@@ -72,6 +84,7 @@
                 // Populate mock draft table
                 const tableBody = document.getElementById('mock-draft-body');
                 if (mockDraft.picks && Array.isArray(mockDraft.picks)) {
+                    console.log('Number of picks:', mockDraft.picks.length);
                     mockDraft.picks.forEach((pick, index) => {
                         const row = document.createElement('tr');
                         row.className = 'hover:bg-gray-50';
