@@ -99,6 +99,406 @@
       "weight": "255 lbs",
       "age": 21,
       "description": "Complete tight end with excellent size and athleticism. 2024 Second-team All-Big Ten selection. Known for his ability to contribute as both a receiver and blocker."
+    },
+    {
+      "id": 11,
+      "name": "Jalon Walker",
+      "position": "LB",
+      "college": "Georgia",
+      "height": "6'2\"",
+      "weight": "230 lbs",
+      "age": 20,
+      "description": "Explosive linebacker with sideline-to-sideline range. 2024 Second-team All-SEC selection. Known for his ability to cover tight ends and make plays in space."
+    },
+    {
+      "id": 12,
+      "name": "Kelvin Banks Jr.",
+      "position": "OT",
+      "college": "Texas",
+      "height": "6'5\"",
+      "weight": "320 lbs",
+      "age": 20,
+      "description": "Prototype left tackle with excellent size and athleticism. 2024 First-team All-Big 12 selection. Known for his strong pass protection and physical run blocking."
+    },
+    {
+      "id": 13,
+      "name": "Armand Membou",
+      "position": "OT",
+      "college": "Missouri",
+      "height": "6'6\"",
+      "weight": "315 lbs",
+      "age": 20,
+      "description": "Physical right tackle with excellent strength and technique. 2024 Second-team All-SEC selection. Known for his ability to dominate in the run game."
+    },
+    {
+      "id": 14,
+      "name": "Mike Green",
+      "position": "EDGE",
+      "college": "Marshall",
+      "height": "6'4\"",
+      "weight": "255 lbs",
+      "age": 21,
+      "description": "Explosive edge rusher with excellent bend and speed. 2024 First-team All-Sun Belt selection. Known for his ability to get to the quarterback."
+    },
+    {
+      "id": 15,
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "college": "Ohio State",
+      "height": "6'1\"",
+      "weight": "205 lbs",
+      "age": 21,
+      "description": "Versatile receiver with excellent route-running ability. 2024 First-team All-Big Ten selection. Known for his ability to make plays after the catch."
+    },
+    {
+      "id": 16,
+      "name": "Colston Loveland",
+      "position": "TE",
+      "college": "Michigan",
+      "height": "6'5\"",
+      "weight": "245 lbs",
+      "age": 20,
+      "description": "Complete tight end with excellent size and athleticism. 2024 Second-team All-Big Ten selection. Known for his ability to contribute as both a receiver and blocker."
+    },
+    {
+      "id": 17,
+      "name": "Tetairoa McMillan",
+      "position": "WR",
+      "college": "Arizona",
+      "height": "6'5\"",
+      "weight": "210 lbs",
+      "age": 20,
+      "description": "Big-bodied receiver with excellent ball skills. 2024 First-team All-Pac-12 selection. Known for his ability to win contested catches."
+    },
+    {
+      "id": 18,
+      "name": "Omarion Hampton",
+      "position": "RB",
+      "college": "UNC",
+      "height": "6'0\"",
+      "weight": "220 lbs",
+      "age": 20,
+      "description": "Powerful running back with excellent vision. 2024 First-team All-ACC selection. Known for his ability to break tackles and gain yards after contact."
+    },
+    {
+      "id": 19,
+      "name": "Jahdae Barron",
+      "position": "CB",
+      "college": "Texas",
+      "height": "6'0\"",
+      "weight": "195 lbs",
+      "age": 21,
+      "description": "Physical cornerback with excellent coverage skills. 2024 First-team All-Big 12 selection. Known for his ability to match up with bigger receivers."
+    },
+    {
+      "id": 20,
+      "name": "Jihaad Campbell",
+      "position": "LB",
+      "college": "Alabama",
+      "height": "6'3\"",
+      "weight": "235 lbs",
+      "age": 20,
+      "description": "Versatile linebacker with excellent instincts. 2024 Second-team All-SEC selection. Known for his ability to play both inside and outside linebacker positions."
+    },
+    {
+      "id": 21,
+      "name": "Kenneth Grant",
+      "position": "DT",
+      "college": "Michigan",
+      "height": "6'4\"",
+      "weight": "330 lbs",
+      "age": 20,
+      "description": "Massive nose tackle with excellent strength. 2024 Second-team All-Big Ten selection. Known for his ability to anchor against double teams."
+    },
+    {
+      "id": 22,
+      "name": "Walter Nolan",
+      "position": "DT",
+      "college": "Ole Miss",
+      "height": "6'4\"",
+      "weight": "315 lbs",
+      "age": 20,
+      "description": "Disruptive interior defensive lineman. 2024 Second-team All-SEC selection. Known for his ability to penetrate and make plays in the backfield."
+    },
+    {
+      "id": 23,
+      "name": "Josh Simmons",
+      "position": "OT",
+      "college": "Ohio State",
+      "height": "6'5\"",
+      "weight": "310 lbs",
+      "age": 21,
+      "description": "Versatile offensive tackle with excellent athleticism. 2024 Second-team All-Big Ten selection. Known for his ability to play both tackle positions."
+    },
+    {
+      "id": 24,
+      "name": "Luther Burden",
+      "position": "WR",
+      "college": "Missouri",
+      "height": "6'0\"",
+      "weight": "200 lbs",
+      "age": 20,
+      "description": "Explosive playmaker with excellent speed. 2024 First-team All-SEC selection. Known for his ability to make big plays after the catch."
+    },
+    {
+      "id": 25,
+      "name": "Matthew Golden",
+      "position": "WR",
+      "college": "Iowa State",
+      "height": "6'2\"",
+      "weight": "205 lbs",
+      "age": 20,
+      "description": "Physical receiver with excellent route-running ability. 2024 First-team All-Big 12 selection. Known for his ability to win contested catches."
+    },
+    {
+      "id": 26,
+      "name": "Maxwell Hairston",
+      "position": "CB",
+      "college": "Kentucky",
+      "height": "6'1\"",
+      "weight": "190 lbs",
+      "age": 21,
+      "description": "Ball-hawking cornerback with excellent instincts. 2024 First-team All-SEC selection. Known for his ability to create turnovers."
+    },
+    {
+      "id": 27,
+      "name": "Malaki Starks",
+      "position": "S",
+      "college": "Georgia",
+      "height": "6'1\"",
+      "weight": "205 lbs",
+      "age": 20,
+      "description": "Versatile safety with excellent range. 2024 First-team All-SEC selection. Known for his ability to play both deep and in the box."
+    },
+    {
+      "id": 28,
+      "name": "Grey Zabel",
+      "position": "OG",
+      "college": "North Dakota State",
+      "height": "6'5\"",
+      "weight": "315 lbs",
+      "age": 21,
+      "description": "Physical guard with excellent strength. 2024 First-team All-FCS selection. Known for his ability to dominate in the run game."
+    },
+    {
+      "id": 29,
+      "name": "James Pearce Jr.",
+      "position": "EDGE",
+      "college": "Tennessee",
+      "height": "6'5\"",
+      "weight": "250 lbs",
+      "age": 20,
+      "description": "Explosive edge rusher with excellent length. 2024 First-team All-SEC selection. Known for his ability to get to the quarterback."
+    },
+    {
+      "id": 30,
+      "name": "Shemar Stewart",
+      "position": "EDGE",
+      "college": "Texas A&M",
+      "height": "6'4\"",
+      "weight": "260 lbs",
+      "age": 20,
+      "description": "Versatile defensive lineman with excellent athleticism. 2024 Second-team All-SEC selection. Known for his ability to play multiple positions."
+    },
+    {
+      "id": 31,
+      "name": "Tyler Booker",
+      "position": "OG",
+      "college": "Alabama",
+      "height": "6'5\"",
+      "weight": "320 lbs",
+      "age": 20,
+      "description": "Physical guard with excellent technique. 2024 First-team All-SEC selection. Known for his ability to dominate in both pass protection and run blocking."
+    },
+    {
+      "id": 32,
+      "name": "Derrick Harmon",
+      "position": "DT",
+      "college": "Oregon",
+      "height": "6'4\"",
+      "weight": "325 lbs",
+      "age": 20,
+      "description": "Disruptive interior defensive lineman. 2024 First-team All-Pac-12 selection. Known for his ability to penetrate and make plays in the backfield."
+    },
+    {
+      "id": 33,
+      "name": "Treyveon Henderson",
+      "position": "RB",
+      "college": "Ohio State",
+      "height": "5'10\"",
+      "weight": "215 lbs",
+      "age": 21,
+      "description": "Explosive running back with excellent vision. 2024 First-team All-Big Ten selection. Known for his ability to make big plays."
+    },
+    {
+      "id": 34,
+      "name": "Benjamin Morrison",
+      "position": "CB",
+      "college": "Notre Dame",
+      "height": "6'0\"",
+      "weight": "190 lbs",
+      "age": 20,
+      "description": "Shutdown corner with excellent instincts. 2024 First-team All-ACC selection. Known for his ability to match up with top receivers."
+    },
+    {
+      "id": 35,
+      "name": "Donovan Ezeiruaku",
+      "position": "EDGE",
+      "college": "Boston College",
+      "height": "6'2\"",
+      "weight": "250 lbs",
+      "age": 21,
+      "description": "Explosive edge rusher with excellent bend. 2024 First-team All-ACC selection. Known for his ability to get to the quarterback."
+    },
+    {
+      "id": 36,
+      "name": "Nick Emmanwori",
+      "position": "S",
+      "college": "South Carolina",
+      "height": "6'1\"",
+      "weight": "210 lbs",
+      "age": 20,
+      "description": "Physical safety with excellent range. 2024 Second-team All-SEC selection. Known for his ability to make plays in the box."
+    },
+    {
+      "id": 37,
+      "name": "Jalen Milroe",
+      "position": "QB",
+      "college": "Alabama",
+      "height": "6'2\"",
+      "weight": "220 lbs",
+      "age": 21,
+      "description": "Dual-threat quarterback with excellent athleticism. 2024 Second-team All-SEC selection. Known for his ability to make plays with both his arm and legs."
+    },
+    {
+      "id": 38,
+      "name": "Jonah Savaiinaea",
+      "position": "OG",
+      "college": "Arizona",
+      "height": "6'5\"",
+      "weight": "325 lbs",
+      "age": 20,
+      "description": "Physical guard with excellent technique. 2024 First-team All-Pac-12 selection. Known for his ability to dominate in both pass protection and run blocking."
+    },
+    {
+      "id": 39,
+      "name": "Nic Scourton",
+      "position": "EDGE",
+      "college": "Texas A&M",
+      "height": "6'3\"",
+      "weight": "255 lbs",
+      "age": 20,
+      "description": "Explosive edge rusher with excellent power. 2024 Second-team All-SEC selection. Known for his ability to set the edge against the run."
+    },
+    {
+      "id": 40,
+      "name": "Josh Conerly Jr.",
+      "position": "OT",
+      "college": "Oregon",
+      "height": "6'5\"",
+      "weight": "310 lbs",
+      "age": 20,
+      "description": "Versatile offensive tackle with excellent athleticism. 2024 First-team All-Pac-12 selection. Known for his ability to play both tackle positions."
+    },
+    {
+      "id": 41,
+      "name": "Quinshon Judkins",
+      "position": "RB",
+      "college": "Ohio State",
+      "height": "5'11\"",
+      "weight": "210 lbs",
+      "age": 20,
+      "description": "Versatile running back with excellent vision. 2024 Second-team All-Big Ten selection. Known for his ability to contribute in both the running and passing game."
+    },
+    {
+      "id": 42,
+      "name": "Jaxson Dart",
+      "position": "QB",
+      "college": "Ole Miss",
+      "height": "6'2\"",
+      "weight": "220 lbs",
+      "age": 21,
+      "description": "Dual-threat quarterback with excellent arm strength. 2024 First-team All-SEC selection. Known for his ability to make plays with both his arm and legs."
+    },
+    {
+      "id": 43,
+      "name": "Kaleb Johnson",
+      "position": "RB",
+      "college": "Iowa",
+      "height": "6'0\"",
+      "weight": "215 lbs",
+      "age": 20,
+      "description": "Powerful running back with excellent vision. 2024 Second-team All-Big Ten selection. Known for his ability to break tackles and gain yards after contact."
+    },
+    {
+      "id": 44,
+      "name": "Shavon Revel Jr.",
+      "position": "CB",
+      "college": "East Carolina",
+      "height": "6'0\"",
+      "weight": "190 lbs",
+      "age": 21,
+      "description": "Physical cornerback with excellent coverage skills. 2024 First-team All-AAC selection. Known for his ability to match up with bigger receivers."
+    },
+    {
+      "id": 45,
+      "name": "Omarr Norman-Lott",
+      "position": "DT",
+      "college": "Tennessee",
+      "height": "6'3\"",
+      "weight": "300 lbs",
+      "age": 20,
+      "description": "Versatile defensive lineman with excellent quickness. 2024 Second-team All-SEC selection. Known for his ability to play multiple positions."
+    },
+    {
+      "id": 46,
+      "name": "Jayden Higgins",
+      "position": "WR",
+      "college": "Iowa State",
+      "height": "6'3\"",
+      "weight": "210 lbs",
+      "age": 20,
+      "description": "Big-bodied receiver with excellent ball skills. 2024 Second-team All-Big 12 selection. Known for his ability to win contested catches."
+    },
+    {
+      "id": 47,
+      "name": "Xavier Watts",
+      "position": "S",
+      "college": "Notre Dame",
+      "height": "6'1\"",
+      "weight": "205 lbs",
+      "age": 21,
+      "description": "Ball-hawking safety with excellent instincts. 2024 First-team All-ACC selection. Known for his ability to create turnovers."
+    },
+    {
+      "id": 48,
+      "name": "Harold Fannin Jr.",
+      "position": "TE",
+      "college": "Bowling Green",
+      "height": "6'4\"",
+      "weight": "250 lbs",
+      "age": 20,
+      "description": "Versatile tight end with excellent athleticism. 2024 First-team All-MAC selection. Known for his ability to contribute as both a receiver and blocker."
+    },
+    {
+      "id": 49,
+      "name": "Azareye'h Thomas",
+      "position": "CB",
+      "college": "Florida State",
+      "height": "6'0\"",
+      "weight": "190 lbs",
+      "age": 20,
+      "description": "Versatile defensive back with excellent instincts. 2024 Second-team All-ACC selection. Known for his ability to play both cornerback and safety."
+    },
+    {
+      "id": 50,
+      "name": "Donovan Jackson",
+      "position": "OG",
+      "college": "Ohio State",
+      "height": "6'4\"",
+      "weight": "320 lbs",
+      "age": 21,
+      "description": "Physical guard with excellent technique. 2024 First-team All-Big Ten selection. Known for his ability to dominate in both pass protection and run blocking."
     }
   ]
 } 
