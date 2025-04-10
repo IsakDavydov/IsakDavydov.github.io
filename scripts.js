@@ -26,7 +26,7 @@ async function loadPlayerData() {
         const timestamp = new Date().getTime();
         const [rankingsResponse, profilesResponse] = await Promise.all([
             fetch(`data/player-rankings.json?t=${timestamp}`),
-            fetch(`data/player-profiles.json?t=${timestamp}`)
+            fetch(`data/player-profiles-v2.json?t=${timestamp}`)
         ]);
 
         if (!rankingsResponse.ok || !profilesResponse.ok) {
