@@ -1,233 +1,233 @@
 {
     "mockDrafts": [
         {
-            "name": "2025 NFL Mock Draft",
-            "author": "Isak Davydov",
-            "date": "2025-04-01",
+            "name": "2025 NFL Mock Draft 1.0",
+            "author": "Saks Draft Hub",
+            "date": "March 2024",
             "picks": [
                 {
                     "team": "Tennessee Titans",
-                    "player": "Carson Beck",
+                    "player": "Cam Ward",
                     "position": "QB",
-                    "college": "Georgia",
-                    "explanation": "The Titans need a franchise quarterback and Beck's accuracy and decision-making make him the perfect fit."
+                    "college": "Miami",
+                    "explanation": "The Titans need a franchise quarterback and Ward's dual-threat ability and leadership make him the perfect fit."
                 },
                 {
                     "team": "Cleveland Browns",
-                    "player": "James Pearce Jr.",
-                    "position": "EDGE",
-                    "college": "Tennessee",
-                    "explanation": "The Browns need to bolster their pass rush and Pearce's explosiveness off the edge is exactly what they need."
+                    "player": "Travis Hunter",
+                    "position": "ATHLETE",
+                    "college": "Colorado",
+                    "explanation": "Hunter's versatility and playmaking ability on both sides of the ball make him an irresistible pick for the Browns."
                 },
                 {
                     "team": "New York Giants",
-                    "player": "Shedeur Sanders",
-                    "position": "QB",
-                    "college": "Colorado",
-                    "explanation": "The Giants need a new face of the franchise and Sanders' dual-threat ability and leadership make him an ideal choice."
+                    "player": "Abdul Carter",
+                    "position": "EDGE",
+                    "college": "Penn State",
+                    "explanation": "Carter's explosive first step and relentless motor make him the perfect edge rusher for the Giants' defense."
                 },
                 {
                     "team": "New England Patriots",
-                    "player": "Luther Burden III",
-                    "position": "WR",
-                    "college": "Missouri",
-                    "explanation": "The Patriots need a true WR1 and Burden's route-running and playmaking ability would transform their offense."
+                    "player": "Mason Graham",
+                    "position": "DT",
+                    "college": "Michigan",
+                    "explanation": "Graham's ability to dominate the interior line gives the Patriots the anchor they need for their defensive front."
                 },
                 {
                     "team": "Jacksonville Jaguars",
-                    "player": "Cooper Beebe",
-                    "position": "IOL",
-                    "college": "Kansas State",
-                    "explanation": "The Jaguars need to strengthen their offensive line and Beebe's versatility and power make him a perfect fit."
+                    "player": "Ashton Jeanty",
+                    "position": "RB",
+                    "college": "Boise State",
+                    "explanation": "Jeanty's combination of speed, power, and receiving ability makes him the perfect three-down back for the Jaguars' offense."
                 },
                 {
                     "team": "Las Vegas Raiders",
-                    "player": "JT Tuimoloau",
-                    "position": "EDGE",
-                    "college": "Ohio State",
-                    "explanation": "The Raiders need to improve their pass rush and Tuimoloau's combination of size and athleticism is exactly what they need."
+                    "player": "Will Johnson",
+                    "position": "CB",
+                    "college": "Michigan",
+                    "explanation": "Johnson's lockdown coverage skills and physicality make him an ideal fit for the Raiders' secondary."
                 },
                 {
                     "team": "New York Jets",
-                    "player": "Olu Fashanu",
+                    "player": "Will Campbell",
                     "position": "OT",
-                    "college": "Penn State",
-                    "explanation": "The Jets need to protect their quarterback and Fashanu's technique and athleticism make him an ideal left tackle."
+                    "college": "LSU",
+                    "explanation": "Campbell's combination of size, strength, and technique makes him the perfect left tackle to protect the Jets' quarterback."
                 },
                 {
                     "team": "Carolina Panthers",
-                    "player": "Malaki Starks",
-                    "position": "S",
-                    "college": "Georgia",
-                    "explanation": "The Panthers need to improve their secondary and Starks' range and ball skills would be a perfect addition."
+                    "player": "Shedeur Sanders",
+                    "position": "QB",
+                    "college": "Colorado",
+                    "explanation": "Sanders' poise under pressure and natural leadership qualities make him the perfect quarterback to lead the Panthers' offense."
                 },
                 {
                     "team": "New Orleans Saints",
-                    "player": "Denzel Burke",
-                    "position": "CB",
-                    "college": "Ohio State",
-                    "explanation": "The Saints need to strengthen their cornerback group and Burke's coverage skills and physicality make him a great fit."
+                    "player": "Mykel Williams",
+                    "position": "EDGE",
+                    "college": "Georgia",
+                    "explanation": "Williams' explosive pass-rush ability and run-stopping skills make him a perfect fit for the Saints' defensive front."
                 },
                 {
                     "team": "Chicago Bears",
-                    "player": "Dallas Turner",
-                    "position": "EDGE",
-                    "college": "Alabama",
-                    "explanation": "The Bears need to improve their pass rush and Turner's explosiveness and bend make him an ideal fit."
+                    "player": "Tyler Warren",
+                    "position": "TE",
+                    "college": "Penn State",
+                    "explanation": "Warren's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Bears' offense."
                 },
                 {
                     "team": "San Francisco 49ers",
-                    "player": "Barrett Carter",
+                    "player": "Jalon Walker",
                     "position": "LB",
-                    "college": "Clemson",
-                    "explanation": "The 49ers need to add youth to their linebacker corps and Carter's athleticism and instincts make him a perfect fit."
+                    "college": "Georgia",
+                    "explanation": "Walker's sideline-to-sideline speed and coverage ability make him the perfect linebacker for the 49ers' defense."
                 },
                 {
                     "team": "Dallas Cowboys",
-                    "player": "Kamari Lassiter",
-                    "position": "CB",
-                    "college": "Georgia",
-                    "explanation": "The Cowboys need to improve their secondary and Lassiter's coverage skills and physicality make him an ideal choice."
+                    "player": "Kelvin Banks Jr.",
+                    "position": "OT",
+                    "college": "Texas",
+                    "explanation": "Banks' combination of size, athleticism, and technique makes him the perfect left tackle to protect the Cowboys' quarterback."
                 },
                 {
                     "team": "Miami Dolphins",
-                    "player": "Jared Verse",
-                    "position": "EDGE",
-                    "college": "Florida State",
-                    "explanation": "The Dolphins need to bolster their pass rush and Verse's power and technique make him a great fit."
+                    "player": "Armand Membou",
+                    "position": "OT",
+                    "college": "Missouri",
+                    "explanation": "Membou's strength and technique make him the perfect right tackle for the Dolphins' offensive line."
                 },
                 {
                     "team": "Indianapolis Colts",
-                    "player": "Kool-Aid McKinstry",
-                    "position": "CB",
-                    "college": "Alabama",
-                    "explanation": "The Colts need to improve their secondary and McKinstry's coverage skills and ball production make him an ideal choice."
+                    "player": "Mike Green",
+                    "position": "EDGE",
+                    "college": "Marshall",
+                    "explanation": "Green's explosive first step and bend around the edge make him the perfect pass rusher for the Colts' defense."
                 },
                 {
                     "team": "Atlanta Falcons",
-                    "player": "Bralen Trice",
-                    "position": "EDGE",
-                    "college": "Washington",
-                    "explanation": "The Falcons need to improve their pass rush and Trice's motor and technique make him a perfect fit."
+                    "player": "Emeka Egbuka",
+                    "position": "WR",
+                    "college": "Ohio State",
+                    "explanation": "Egbuka's route-running ability and after-catch skills make him the perfect complement to the Falcons' receiving corps."
                 },
                 {
                     "team": "Arizona Cardinals",
-                    "player": "Tyler Nubin",
-                    "position": "S",
-                    "college": "Minnesota",
-                    "explanation": "The Cardinals need to improve their secondary and Nubin's range and ball skills make him an ideal choice."
+                    "player": "Colston Loveland",
+                    "position": "TE",
+                    "college": "Michigan",
+                    "explanation": "Loveland's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Cardinals' offense."
                 },
                 {
                     "team": "Cincinnati Bengals",
-                    "player": "Graham Barton",
-                    "position": "IOL",
-                    "college": "Duke",
-                    "explanation": "The Bengals need to strengthen their offensive line and Barton's versatility and technique make him a perfect fit."
+                    "player": "Tetairoa McMillan",
+                    "position": "WR",
+                    "college": "Arizona",
+                    "explanation": "McMillan's size, speed, and ball skills make him the perfect deep threat for the Bengals' offense."
                 },
                 {
                     "team": "Seattle Seahawks",
-                    "player": "Jer'Zhan Newton",
-                    "position": "IDL",
-                    "college": "Illinois",
-                    "explanation": "The Seahawks need to improve their interior defensive line and Newton's quickness and power make him an ideal choice."
+                    "player": "Omarion Hampton",
+                    "position": "RB",
+                    "college": "UNC",
+                    "explanation": "Hampton's combination of power and speed makes him the perfect running back for the Seahawks' offense."
                 },
                 {
                     "team": "Tampa Bay Buccaneers",
-                    "player": "Kalen King",
+                    "player": "Jahdae Barron",
                     "position": "CB",
-                    "college": "Penn State",
-                    "explanation": "The Buccaneers need to improve their secondary and King's coverage skills and physicality make him a great fit."
+                    "college": "Texas",
+                    "explanation": "Barron's coverage skills and physicality make him the perfect cornerback for the Buccaneers' defense."
                 },
                 {
                     "team": "Denver Broncos",
-                    "player": "Quinn Ewers",
-                    "position": "QB",
-                    "college": "Texas",
-                    "explanation": "The Broncos need a new quarterback and Ewers' arm talent and potential make him an intriguing choice."
+                    "player": "Jihaad Campbell",
+                    "position": "LB",
+                    "college": "Alabama",
+                    "explanation": "Campbell's sideline-to-sideline speed and coverage ability make him the perfect linebacker for the Broncos' defense."
                 },
                 {
                     "team": "Pittsburgh Steelers",
-                    "player": "Amarius Mims",
-                    "position": "OT",
-                    "college": "Georgia",
-                    "explanation": "The Steelers need to improve their offensive line and Mims' size and athleticism make him an ideal choice."
+                    "player": "Kenneth Grant",
+                    "position": "DT",
+                    "college": "Michigan",
+                    "explanation": "Grant's ability to dominate the interior line makes him the perfect nose tackle for the Steelers' defense."
                 },
                 {
                     "team": "Los Angeles Chargers",
-                    "player": "Trey Benson",
-                    "position": "RB",
-                    "college": "Florida State",
-                    "explanation": "The Chargers need to improve their running game and Benson's combination of power and speed make him a perfect fit."
+                    "player": "Walter Nolan",
+                    "position": "DT",
+                    "college": "Ole Miss",
+                    "explanation": "Nolan's combination of size and quickness makes him the perfect interior disruptor for the Chargers' defense."
                 },
                 {
                     "team": "Green Bay Packers",
-                    "player": "Ja'Tavion Sanders",
-                    "position": "TE",
-                    "college": "Texas",
-                    "explanation": "The Packers need to add a dynamic tight end and Sanders' athleticism and receiving ability make him an ideal choice."
+                    "player": "Josh Simmons",
+                    "position": "OT",
+                    "college": "Ohio State",
+                    "explanation": "Simmons' combination of size and athleticism makes him the perfect right tackle for the Packers' offensive line."
                 },
                 {
                     "team": "Minnesota Vikings",
-                    "player": "Drake Maye",
-                    "position": "QB",
-                    "college": "North Carolina",
-                    "explanation": "The Vikings need a new quarterback and Maye's arm talent and mobility make him an intriguing choice."
+                    "player": "Luther Burden",
+                    "position": "WR",
+                    "college": "Missouri",
+                    "explanation": "Burden's route-running ability and after-catch skills make him the perfect complement to the Vikings' receiving corps."
                 },
                 {
                     "team": "Houston Texans",
-                    "player": "Troy Fautanu",
-                    "position": "IOL",
-                    "college": "Washington",
-                    "explanation": "The Texans need to strengthen their offensive line and Fautanu's versatility and power make him a perfect fit."
+                    "player": "Matthew Golden",
+                    "position": "WR",
+                    "college": "Iowa State",
+                    "explanation": "Golden's combination of size and speed makes him the perfect deep threat for the Texans' offense."
                 },
                 {
                     "team": "Los Angeles Rams",
-                    "player": "Xavier Worthy",
-                    "position": "WR",
-                    "college": "Texas",
-                    "explanation": "The Rams need to add speed to their receiving corps and Worthy's explosiveness and route-running make him an ideal choice."
+                    "player": "Maxwell Hairston",
+                    "position": "CB",
+                    "college": "Kentucky",
+                    "explanation": "Hairston's coverage skills and ball-hawking ability make him the perfect cornerback for the Rams' defense."
                 },
                 {
                     "team": "Baltimore Ravens",
-                    "player": "Treyvon Brazile",
-                    "position": "EDGE",
-                    "college": "Arkansas",
-                    "explanation": "The Ravens need to improve their pass rush and Brazile's athleticism and potential make him a great fit."
+                    "player": "Malaki Starks",
+                    "position": "S",
+                    "college": "Georgia",
+                    "explanation": "Starks' combination of coverage skills and physicality makes him the perfect safety for the Ravens' defense."
                 },
                 {
                     "team": "Detroit Lions",
-                    "player": "Kamren Kinchens",
-                    "position": "S",
-                    "college": "Miami",
-                    "explanation": "The Lions need to improve their secondary and Kinchens' range and ball skills make him an ideal choice."
+                    "player": "Grey Zabel",
+                    "position": "OG",
+                    "college": "North Dakota State",
+                    "explanation": "Zabel's strength and technique make him the perfect guard for the Lions' offensive line."
                 },
                 {
                     "team": "Washington Commanders",
-                    "player": "Jordan Morgan",
-                    "position": "OT",
-                    "college": "Arizona",
-                    "explanation": "The Commanders need to improve their offensive line and Morgan's athleticism and technique make him a perfect fit."
+                    "player": "James Pearce Jr.",
+                    "position": "EDGE",
+                    "college": "Tennessee",
+                    "explanation": "Pearce's explosive pass-rush ability makes him the perfect edge rusher for the Commanders' defense."
                 },
                 {
                     "team": "Buffalo Bills",
-                    "player": "Adonai Mitchell",
-                    "position": "WR",
-                    "college": "Texas",
-                    "explanation": "The Bills need to add a big-play receiver and Mitchell's size and speed make him an ideal choice."
+                    "player": "Shemar Stewart",
+                    "position": "EDGE",
+                    "college": "Texas A&M",
+                    "explanation": "Stewart's combination of size and speed makes him the perfect edge rusher for the Bills' defense."
                 },
                 {
                     "team": "Kansas City Chiefs",
-                    "player": "Keon Coleman",
-                    "position": "WR",
-                    "college": "Florida State",
-                    "explanation": "The Chiefs need to add a physical receiver and Coleman's size and ball skills make him a perfect fit."
+                    "player": "Tyler Booker",
+                    "position": "OG",
+                    "college": "Alabama",
+                    "explanation": "Booker's strength and technique make him the perfect guard for the Chiefs' offensive line."
                 },
                 {
                     "team": "Philadelphia Eagles",
-                    "player": "Cooper DeJean",
-                    "position": "CB",
-                    "college": "Iowa",
-                    "explanation": "The Eagles need to improve their secondary and DeJean's versatility and ball skills make him an ideal choice."
+                    "player": "Derrick Harmon",
+                    "position": "DT",
+                    "college": "Oregon",
+                    "explanation": "Harmon's ability to disrupt the interior line makes him the perfect defensive tackle for the Eagles' defense."
                 }
             ]
         }
