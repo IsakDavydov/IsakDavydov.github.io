@@ -105,10 +105,6 @@ function showPlayerProfile(playerName) {
         <p class="text-gray-700">${player.description}</p>
     `;
 
-    // Clear highlights section since we're using description now
-    const highlightsContainer = document.getElementById('modal-highlights');
-    highlightsContainer.innerHTML = '';
-
     // Show modal
     document.getElementById('player-modal').classList.remove('hidden');
     console.log('Modal should be visible now');
