@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Picks - NFL Draft Hub</title>
+    <title>Team Picks - Saks Draft Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,6 +36,59 @@
         </div>
     </main>
 
-    <script src="scripts.js"></script>
+    <script>
+        // Load team picks data
+        fetch('data/team-picks.json')
+            .then(response => response.json())
+            .then(data => {
+                const teamsContainer = document.getElementById('teams-container');
+                const conferenceFilter = document.getElementById('conference-filter');
+                
+                function renderTeams(conference) {
+                    teamsContainer.innerHTML = '';
+                    data.teams.forEach(team => {
+                        if (conference === 'all' || team.conference === conference) {
+                            const teamLogo = team.name.toLowerCase().replace(/\s+/g, '-');
+                            const card = document.createElement('div');
+                            card.className = 'bg-white rounded-lg shadow-md p-4';
+                            card.innerHTML = `
+                                <div class="flex items-center mb-4">
+                                    <img src="images/logos/nfl/${teamLogo}.png" alt="${team.name} logo" class="w-12 h-12 mr-3">
+                                    <h3 class="text-xl font-bold">${team.name}</h3>
+                                </div>
+                                <div class="space-y-2">
+                                    <p><strong>Conference:</strong> ${team.conference}</p>
+                                    <div class="mt-4">
+                                        <h4 class="font-semibold mb-2">Draft Picks:</h4>
+                                        <ul class="space-y-1">
+                                            ${team.picks.map(pick => `
+                                                <li>Round ${pick.round}, Pick ${pick.pick}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                </div>
+                            `;
+                            teamsContainer.appendChild(card);
+                        }
+                    });
+                }
+
+                // Initial render
+                renderTeams('all');
+
+                // Add event listener for conference filter
+                conferenceFilter.addEventListener('change', (e) => {
+                    renderTeams(e.target.value);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading team picks:', error);
+                document.getElementById('teams-container').innerHTML = `
+                    <div class="col-span-full text-center text-red-500">
+                        Error loading team picks data. Please try again later.
+                    </div>
+                `;
+            });
+    </script>
 </body>
 </html> 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Drafts - NFL Draft Hub</title>
+    <title>Mock Drafts - Saks Draft Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -76,12 +76,22 @@
                         const row = document.createElement('tr');
                         row.className = 'hover:bg-gray-50';
                         
+                        // Get team and college names for logo filenames
+                        const teamLogo = pick.team.toLowerCase().replace(/\s+/g, '-');
+                        const collegeLogo = pick.college.toLowerCase().replace(/\s+/g, '-');
+                        
                         row.innerHTML = `
                             <td class="px-6 py-4">${index + 1}</td>
-                            <td class="px-6 py-4">${pick.team}</td>
+                            <td class="px-6 py-4 flex items-center">
+                                <img src="images/logos/nfl/${teamLogo}.png" alt="${pick.team} logo" class="w-8 h-8 mr-2">
+                                ${pick.team}
+                            </td>
                             <td class="px-6 py-4">${pick.player}</td>
                             <td class="px-6 py-4">${pick.position}</td>
-                            <td class="px-6 py-4">${pick.college}</td>
+                            <td class="px-6 py-4 flex items-center">
+                                <img src="images/logos/college/${collegeLogo}.png" alt="${pick.college} logo" class="w-8 h-8 mr-2">
+                                ${pick.college}
+                            </td>
                             <td class="px-6 py-4">${pick.explanation}</td>
                         `;
                         
