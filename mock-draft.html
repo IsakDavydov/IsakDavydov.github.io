@@ -48,8 +48,14 @@
     <script>
         // Load mock draft data
         fetch('data/mock-draft.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Data loaded:', data); // Debug log
                 const mockDraft = data.mockDrafts[0];
                 
                 // Set mock draft details
@@ -75,7 +81,18 @@
                     tableBody.appendChild(row);
                 });
             })
-            .catch(error => console.error('Error loading mock draft data:', error));
+            .catch(error => {
+                console.error('Error loading mock draft data:', error);
+                // Display error message to user
+                const tableBody = document.getElementById('mock-draft-body');
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="px-6 py-4 text-center text-red-500">
+                            Error loading mock draft data. Please try again later.
+                        </td>
+                    </tr>
+                `;
+            });
     </script>
 </body>
 </html> 
