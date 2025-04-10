@@ -48,7 +48,7 @@
     <script>
         // Load mock draft data
         console.log('Starting to load mock draft data...');
-        fetch('data/mock-draft.json')
+        fetch('data/mock-drafts.json?v=' + new Date().getTime())
             .then(response => {
                 console.log('Response status:', response.status);
                 if (!response.ok) {
