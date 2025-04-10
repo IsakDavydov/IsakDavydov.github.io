@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load player data
 async function loadPlayerData() {
     try {
+        console.log('Loading player data...');
         const [rankingsResponse, profilesResponse] = await Promise.all([
             fetch('data/player-rankings.json'),
             fetch('data/player-profiles.json')
@@ -34,8 +35,14 @@ async function loadPlayerData() {
         const rankingsData = await rankingsResponse.json();
         const profilesData = await profilesResponse.json();
 
+        console.log('Loaded rankings data:', rankingsData);
+        console.log('Loaded profiles data:', profilesData);
+
         players = rankingsData.players;
         playerProfiles = profilesData.players;
+
+        console.log('Players array:', players);
+        console.log('Player profiles array:', playerProfiles);
 
         renderPlayers();
         setupEventListeners();
@@ -62,7 +69,7 @@ function renderPlayers(filteredPlayers = players) {
         row.innerHTML = `
             <td class="px-4 sm:px-6 py-4 whitespace-nowrap">${player.rank}</td>
             <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
-                <button onclick="showPlayerProfile('${player.name}')" class="text-blue-600 hover:text-blue-800 font-medium">
+                <button class="text-blue-600 hover:text-blue-800 font-medium player-name-btn" data-player-name="${player.name}">
                     ${player.name}
                 </button>
             </td>
@@ -75,11 +82,16 @@ function renderPlayers(filteredPlayers = players) {
 
 // Show player profile modal
 function showPlayerProfile(playerName) {
+    console.log('Attempting to show profile for:', playerName);
+    console.log('Available profiles:', playerProfiles);
+
     const player = playerProfiles.find(p => p.name === playerName);
     if (!player) {
         console.error('Player profile not found:', playerName);
         return;
     }
+
+    console.log('Found player profile:', player);
 
     // Update modal content
     document.getElementById('modal-player-name').textContent = player.name;
@@ -99,6 +111,7 @@ function showPlayerProfile(playerName) {
 
     // Show modal
     document.getElementById('player-modal').classList.remove('hidden');
+    console.log('Modal should be visible now');
 }
 
 // Close modal
@@ -124,6 +137,14 @@ function setupEventListeners() {
             ? players 
             : players.filter(player => player.position === position);
         renderPlayers(filteredPlayers);
+    });
+
+    // Player name click handler using event delegation
+    document.getElementById('player-table-body').addEventListener('click', (e) => {
+        if (e.target.classList.contains('player-name-btn')) {
+            const playerName = e.target.getAttribute('data-player-name');
+            showPlayerProfile(playerName);
+        }
     });
 
     // Close modal when clicking outside
