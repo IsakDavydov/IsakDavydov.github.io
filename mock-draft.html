@@ -89,47 +89,43 @@
                         const row = document.createElement('tr');
                         row.className = 'hover:bg-gray-50';
                         
-                        // Get team and college names for logo filenames
-                        const teamLogo = pick.team.toLowerCase().replace(/\s+/g, '-');
-                        const collegeLogo = pick.college.toLowerCase().replace(/\s+/g, '-');
-                        
-                        // Create image elements with error handling
-                        const teamImg = document.createElement('img');
-                        teamImg.src = `images/logos/nfl/${teamLogo}.png`;
-                        teamImg.alt = `${pick.team} logo`;
-                        teamImg.className = 'w-8 h-8 mr-2';
-                        teamImg.onerror = function() {
-                            console.log(`Failed to load team logo: ${teamLogo}.png`);
-                            this.style.display = 'none';
-                        };
-                        
-                        const collegeImg = document.createElement('img');
-                        collegeImg.src = `images/logos/college/${collegeLogo}.png`;
-                        collegeImg.alt = `${pick.college} logo`;
-                        collegeImg.className = 'w-8 h-8 mr-2';
-                        collegeImg.onerror = function() {
-                            console.log(`Failed to load college logo: ${collegeLogo}.png`);
-                            this.style.display = 'none';
-                        };
-                        
                         row.innerHTML = `
                             <td class="px-6 py-4">${index + 1}</td>
-                            <td class="px-6 py-4 flex items-center" id="team-cell-${index}">
+                            <td class="px-6 py-4 flex items-center">
                                 ${pick.team}
                             </td>
                             <td class="px-6 py-4">${pick.player}</td>
                             <td class="px-6 py-4">${pick.position}</td>
-                            <td class="px-6 py-4 flex items-center" id="college-cell-${index}">
+                            <td class="px-6 py-4 flex items-center">
                                 ${pick.college}
                             </td>
                             <td class="px-6 py-4">${pick.explanation}</td>
                         `;
                         
-                        // Append images to their respective cells
-                        const teamCell = document.getElementById(`team-cell-${index}`);
-                        const collegeCell = document.getElementById(`college-cell-${index}`);
+                        // Get team and college cells
+                        const teamCell = row.querySelector('td:nth-child(2)');
+                        const collegeCell = row.querySelector('td:nth-child(5)');
                         
+                        // Create and append team logo
+                        const teamImg = document.createElement('img');
+                        teamImg.src = `images/logos/nfl/${pick.team.toLowerCase().replace(/\s+/g, '-')}.png`;
+                        teamImg.alt = `${pick.team} logo`;
+                        teamImg.className = 'w-8 h-8 mr-2';
+                        teamImg.onerror = function() {
+                            console.log(`Failed to load team logo: ${pick.team}`);
+                            this.style.display = 'none';
+                        };
                         teamCell.insertBefore(teamImg, teamCell.firstChild);
+                        
+                        // Create and append college logo
+                        const collegeImg = document.createElement('img');
+                        collegeImg.src = `images/logos/college/${pick.college.toLowerCase().replace(/\s+/g, '-')}.png`;
+                        collegeImg.alt = `${pick.college} logo`;
+                        collegeImg.className = 'w-8 h-8 mr-2';
+                        collegeImg.onerror = function() {
+                            console.log(`Failed to load college logo: ${pick.college}`);
+                            this.style.display = 'none';
+                        };
                         collegeCell.insertBefore(collegeImg, collegeCell.firstChild);
                         
                         tableBody.appendChild(row);

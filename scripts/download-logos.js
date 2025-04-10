@@ -55,18 +55,20 @@ const colleges = [
     'colorado',
     'penn-state',
     'michigan',
-    'kansas-state',
-    'ohio-state',
+    'boise-state',
+    'lsu',
     'georgia',
-    'alabama',
-    'clemson',
-    'florida-state',
     'texas',
-    'north-carolina',
-    'washington',
+    'missouri',
+    'alabama',
+    'ohio-state',
+    'florida-state',
+    'clemson',
+    'kansas-state',
     'illinois',
-    'duke',
-    'boise-state'
+    'washington',
+    'north-carolina',
+    'duke'
 ];
 
 function downloadLogo(url, filename) {
@@ -100,25 +102,49 @@ async function downloadNflLogos() {
 }
 
 // Download college logos
-async function downloadCollegeLogos() {
+const downloadCollegeLogo = (college) => {
+    return new Promise((resolve, reject) => {
+        const url = `https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/${college}.png&w=100&h=100&transparent=true`;
+        const filePath = path.join(collegeDir, `${college}.png`);
+        
+        const file = fs.createWriteStream(filePath);
+        
+        https.get(url, (response) => {
+            if (response.statusCode !== 200) {
+                reject(new Error(`Failed to download ${college} logo: ${response.statusCode}`));
+                return;
+            }
+
+            response.pipe(file);
+            
+            file.on('finish', () => {
+                file.close();
+                console.log(`Downloaded ${college} logo`);
+                resolve();
+            });
+        }).on('error', (err) => {
+            fs.unlink(filePath, () => {}); // Delete the file if there's an error
+            reject(err);
+        });
+    });
+};
+
+const downloadAllCollegeLogos = async () => {
     for (const college of colleges) {
-        const url = `https://a.espncdn.com/i/teamlogos/ncaa/500/${college}.png`;
-        const filename = path.join(collegeDir, `${college}.png`);
         try {
-            await downloadLogo(url, filename);
-            console.log(`Downloaded ${college} logo`);
+            await downloadCollegeLogo(college);
         } catch (error) {
             console.error(`Error downloading ${college} logo:`, error.message);
         }
     }
-}
+};
 
 // Run the downloads
 async function main() {
     console.log('Downloading NFL logos...');
     await downloadNflLogos();
     console.log('Downloading college logos...');
-    await downloadCollegeLogos();
+    await downloadAllCollegeLogos();
     console.log('All downloads completed!');
 }
 
