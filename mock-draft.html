@@ -56,7 +56,13 @@
             })
             .then(data => {
                 console.log('Data loaded:', data); // Debug log
-                const mockDraft = data.mockDrafts[0];
+                
+                // Validate data structure
+                if (!data || !data.mockDraft || !Array.isArray(data.mockDraft) || data.mockDraft.length === 0) {
+                    throw new Error('Invalid mock draft data structure');
+                }
+                
+                const mockDraft = data.mockDraft[0];
                 
                 // Set mock draft details
                 document.getElementById('mock-draft-title').textContent = mockDraft.name;
@@ -65,21 +71,25 @@
                 
                 // Populate mock draft table
                 const tableBody = document.getElementById('mock-draft-body');
-                mockDraft.picks.forEach((pick, index) => {
-                    const row = document.createElement('tr');
-                    row.className = 'hover:bg-gray-50';
-                    
-                    row.innerHTML = `
-                        <td class="px-6 py-4">${index + 1}</td>
-                        <td class="px-6 py-4">${pick.team}</td>
-                        <td class="px-6 py-4">${pick.player}</td>
-                        <td class="px-6 py-4">${pick.position}</td>
-                        <td class="px-6 py-4">${pick.college}</td>
-                        <td class="px-6 py-4">${pick.explanation}</td>
-                    `;
-                    
-                    tableBody.appendChild(row);
-                });
+                if (mockDraft.picks && Array.isArray(mockDraft.picks)) {
+                    mockDraft.picks.forEach((pick, index) => {
+                        const row = document.createElement('tr');
+                        row.className = 'hover:bg-gray-50';
+                        
+                        row.innerHTML = `
+                            <td class="px-6 py-4">${index + 1}</td>
+                            <td class="px-6 py-4">${pick.team}</td>
+                            <td class="px-6 py-4">${pick.player}</td>
+                            <td class="px-6 py-4">${pick.position}</td>
+                            <td class="px-6 py-4">${pick.college}</td>
+                            <td class="px-6 py-4">${pick.explanation}</td>
+                        `;
+                        
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    throw new Error('Invalid picks data');
+                }
             })
             .catch(error => {
                 console.error('Error loading mock draft data:', error);
@@ -88,7 +98,7 @@
                 tableBody.innerHTML = `
                     <tr>
                         <td colspan="6" class="px-6 py-4 text-center text-red-500">
-                            Error loading mock draft data. Please try again later.
+                            Error loading mock draft data: ${error.message}
                         </td>
                     </tr>
                 `;
