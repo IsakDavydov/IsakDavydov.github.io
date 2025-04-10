@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadPlayerData() {
     try {
         console.log('Loading player data...');
+        const timestamp = new Date().getTime();
         const [rankingsResponse, profilesResponse] = await Promise.all([
-            fetch('data/player-rankings.json'),
-            fetch('data/player-profiles.json')
+            fetch(`data/player-rankings.json?t=${timestamp}`),
+            fetch(`data/player-profiles.json?t=${timestamp}`)
         ]);
 
         if (!rankingsResponse.ok || !profilesResponse.ok) {
