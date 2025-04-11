@@ -9,20 +9,6 @@
     --text-secondary: #64748b;
 }
 
-/* TEST STYLE - REMOVE AFTER VERIFICATION */
-body::before {
-    content: "CSS Loaded Successfully";
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: var(--primary-color);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    z-index: 9999;
-    font-size: 12px;
-}
-
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--background-color);
