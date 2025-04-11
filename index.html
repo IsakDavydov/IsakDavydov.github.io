@@ -44,10 +44,38 @@
             <table class="min-w-full bg-white rounded-lg overflow-hidden border-collapse">
                 <thead class="bg-gray-800 text-white">
                     <tr>
-                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700" onclick="sortTable(0)">Rank</th>
-                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700" onclick="sortTable(1)">Name</th>
-                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700" onclick="sortTable(2)">Position</th>
-                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700" onclick="sortTable(3)">School</th>
+                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700 transition-colors duration-200" onclick="sortTable(0)">
+                            <div class="flex items-center gap-2">
+                                <span>Rank</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700 transition-colors duration-200" onclick="sortTable(1)">
+                            <div class="flex items-center gap-2">
+                                <span>Name</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700 transition-colors duration-200" onclick="sortTable(2)">
+                            <div class="flex items-center gap-2">
+                                <span>Position</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th class="px-4 sm:px-6 py-3 text-left cursor-pointer hover:bg-gray-700 transition-colors duration-200" onclick="sortTable(3)">
+                            <div class="flex items-center gap-2">
+                                <span>School</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                </svg>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody id="player-table-body" class="divide-y divide-gray-200">
