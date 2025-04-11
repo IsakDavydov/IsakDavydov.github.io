@@ -132,7 +132,13 @@ function setupEventListeners() {
         const position = e.target.value;
         const filteredPlayers = position === 'all' 
             ? players 
-            : players.filter(player => player.position === position);
+            : players.filter(player => {
+                // Special case for Travis Hunter
+                if (player.name === 'Travis Hunter') {
+                    return position === 'WR' || position === 'CB';
+                }
+                return player.position === position;
+            });
         renderPlayers(filteredPlayers);
     });
 
