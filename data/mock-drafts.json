@@ -28,17 +28,17 @@
                 },
                 {
                     "team": "New England Patriots",
-                    "player": "Mason Graham",
-                    "position": "DT",
-                    "college": "Michigan",
-                    "explanation": "Graham's ability to dominate the interior line gives the Patriots the anchor they need for their defensive front."
+                    "player": "Will Campbell",
+                    "position": "OT",
+                    "college": "LSU",
+                    "explanation": "Campbell's combination of size, strength, and technique makes him the perfect left tackle to protect the Patriots' quarterback."
                 },
                 {
                     "team": "Jacksonville Jaguars",
-                    "player": "Jalon Walker",
-                    "position": "LB",
-                    "college": "Georgia",
-                    "explanation": "Walker's sideline-to-sideline speed and coverage ability make him the perfect linebacker for the Jaguars' defense."
+                    "player": "Mason Graham",
+                    "position": "DT",
+                    "college": "Michigan",
+                    "explanation": "Graham's ability to dominate the interior line gives the Jaguars the anchor they need for their defensive front."
                 },
                 {
                     "team": "Las Vegas Raiders",
@@ -49,17 +49,17 @@
                 },
                 {
                     "team": "New York Jets",
-                    "player": "Will Johnson",
-                    "position": "CB",
-                    "college": "Michigan",
-                    "explanation": "Johnson's lockdown coverage skills and physicality make him an ideal fit for the Jets' secondary."
+                    "player": "Tyler Warren",
+                    "position": "TE",
+                    "college": "Penn State",
+                    "explanation": "Warren's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Jets' offense."
                 },
                 {
                     "team": "Carolina Panthers",
-                    "player": "Mykel Williams",
-                    "position": "EDGE",
+                    "player": "Jalon Walker",
+                    "position": "LB",
                     "college": "Georgia",
-                    "explanation": "Williams' explosive pass-rush ability and run-stopping skills make him a perfect fit for the Panthers' defensive front."
+                    "explanation": "Walker's sideline-to-sideline speed and coverage ability make him the perfect linebacker for the Panthers' defense."
                 },
                 {
                     "team": "New Orleans Saints",
@@ -70,10 +70,10 @@
                 },
                 {
                     "team": "Chicago Bears",
-                    "player": "Will Campbell",
-                    "position": "OT",
-                    "college": "LSU",
-                    "explanation": "Campbell's combination of size, strength, and technique makes him the perfect left tackle to protect the Bears' quarterback."
+                    "player": "Will Johnson",
+                    "position": "CB",
+                    "college": "Michigan",
+                    "explanation": "Johnson's lockdown coverage skills and physicality make him an ideal fit for the Bears' secondary."
                 },
                 {
                     "team": "San Francisco 49ers",
@@ -84,10 +84,10 @@
                 },
                 {
                     "team": "Dallas Cowboys",
-                    "player": "Emeka Egbuka",
+                    "player": "Matthew Golden",
                     "position": "WR",
-                    "college": "Ohio State",
-                    "explanation": "Egbuka's route-running ability and after-catch skills make him the perfect complement to the Cowboys' receiving corps."
+                    "college": "Texas",
+                    "explanation": "Golden's combination of size and speed makes him the perfect deep threat for the Cowboys' offense."
                 },
                 {
                     "team": "Miami Dolphins",
@@ -98,10 +98,10 @@
                 },
                 {
                     "team": "Indianapolis Colts",
-                    "player": "Tyler Warren",
+                    "player": "Colston Loveland",
                     "position": "TE",
-                    "college": "Penn State",
-                    "explanation": "Warren's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Colts' offense."
+                    "college": "Michigan",
+                    "explanation": "Loveland's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Colts' offense."
                 },
                 {
                     "team": "Atlanta Falcons",
@@ -161,10 +161,10 @@
                 },
                 {
                     "team": "Green Bay Packers",
-                    "player": "Luther Burden",
-                    "position": "WR",
-                    "college": "Missouri",
-                    "explanation": "Burden's route-running ability and after-catch skills make him the perfect complement to the Packers' receiving corps."
+                    "player": "Mykel Williams",
+                    "position": "EDGE",
+                    "college": "Georgia",
+                    "explanation": "Williams' explosive pass-rush ability and run-stopping skills make him a perfect fit for the Packers' defensive front."
                 },
                 {
                     "team": "Minnesota Vikings",
@@ -175,38 +175,38 @@
                 },
                 {
                     "team": "Houston Texans",
-                    "player": "Matthew Golden",
+                    "player": "Emeka Egbuka",
                     "position": "WR",
-                    "college": "Iowa State",
-                    "explanation": "Golden's combination of size and speed makes him the perfect deep threat for the Texans' offense."
+                    "college": "Ohio State",
+                    "explanation": "Egbuka's route-running ability and after-catch skills make him the perfect complement to the Texans' receiving corps."
                 },
                 {
                     "team": "Los Angeles Rams",
-                    "player": "Maxwell Hairston",
-                    "position": "CB",
-                    "college": "Kentucky",
-                    "explanation": "Hairston's coverage skills and ball-hawking ability make him the perfect cornerback for the Rams' defense."
+                    "player": "Jaxson Dart",
+                    "position": "QB",
+                    "college": "Ole Miss",
+                    "explanation": "Dart's combination of arm talent and mobility makes him the perfect quarterback to lead the Rams' offense."
                 },
                 {
                     "team": "Baltimore Ravens",
-                    "player": "James Pearce Jr.",
-                    "position": "EDGE",
-                    "college": "Tennessee",
-                    "explanation": "Pearce's explosive pass-rush ability makes him the perfect edge rusher for the Ravens' defense."
-                },
-                {
-                    "team": "Detroit Lions",
                     "player": "Shemar Stewart",
                     "position": "EDGE",
                     "college": "Texas A&M",
-                    "explanation": "Stewart's combination of size and speed makes him the perfect edge rusher for the Lions' defense."
+                    "explanation": "Stewart's combination of size and speed makes him the perfect edge rusher for the Ravens' defense."
+                },
+                {
+                    "team": "Detroit Lions",
+                    "player": "James Pearce Jr.",
+                    "position": "EDGE",
+                    "college": "Tennessee",
+                    "explanation": "Pearce's explosive pass-rush ability makes him the perfect edge rusher for the Lions' defense."
                 },
                 {
                     "team": "Washington Commanders",
-                    "player": "Colston Loveland",
-                    "position": "TE",
-                    "college": "Michigan",
-                    "explanation": "Loveland's combination of size, athleticism, and blocking ability makes him the perfect tight end for the Commanders' offense."
+                    "player": "Maxwell Hairston",
+                    "position": "CB",
+                    "college": "Kentucky",
+                    "explanation": "Hairston's coverage skills and ball-hawking ability make him the perfect cornerback for the Commanders' defense."
                 },
                 {
                     "team": "Buffalo Bills",
