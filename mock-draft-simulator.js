@@ -185,8 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const team = teams.find(t => t.pick === currentPick);
             if (team) {
                 makeAIPick(team);
+            } else {
+                // If no team found for this pick, just increment
+                currentPick++;
             }
-            currentPick++;
         }
         
         // It's user's turn
