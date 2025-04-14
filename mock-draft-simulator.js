@@ -120,15 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
         draftPicks = [];
         updateDraftBoard();
         
-        // Find the first pick for the selected team
+        // Find the team's pick
         const currentTeamData = teams.find(t => t.name === currentTeam);
         if (!currentTeamData) return;
         
-        const firstUserPick = currentTeamData.picks[0];
+        const teamPick = currentTeamData.pick;
         
-        // Simulate AI picks until first user pick
-        while (currentPick < firstUserPick) {
-            const team = teams.find(t => t.picks.includes(currentPick));
+        // Simulate AI picks until team's pick
+        while (currentPick < teamPick) {
+            const team = teams.find(t => t.pick === currentPick);
             if (team) {
                 makeAIPick(team);
             }
