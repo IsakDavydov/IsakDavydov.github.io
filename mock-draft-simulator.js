@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.log('No available players for team needs:', teamNeeds);
         }
+        currentPick++;
     }
 
     function makeUserPick(playerId) {
@@ -382,9 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (team) {
             console.log('Making AI pick for team:', team.name);
             makeAIPick(team);
+        } else {
+            console.log('No team found for pick:', currentPick);
+            currentPick++;
         }
-        
-        currentPick++;
         
         // Use setTimeout to prevent UI freezing
         setTimeout(() => {
