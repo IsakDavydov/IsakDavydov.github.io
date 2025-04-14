@@ -151,9 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (team) {
             console.log('Making initial AI pick for team:', team.name);
             makeAIPick(team);
+        } else {
+            console.log('No team found for pick:', currentPick);
+            currentPick++;
         }
-        
-        currentPick++;
         
         // Use setTimeout to prevent UI freezing
         setTimeout(() => {
@@ -429,7 +430,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDraftStatus();
         
         // Simulate next AI picks
-        simulateAIPicks();
+        setTimeout(() => {
+            simulateAIPicks();
+        }, 100);
     };
 
     window.removePick = function(index) {
