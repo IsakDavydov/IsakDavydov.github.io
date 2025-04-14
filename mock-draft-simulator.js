@@ -141,10 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (team) {
                 console.log('Making initial AI pick for team:', team.name);
                 makeAIPick(team);
-            } else {
-                console.log('No team found for pick:', currentPick);
-                currentPick++;
             }
+            currentPick++;
         }
         
         // It's user's turn
@@ -221,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.log('No available players for team needs:', teamNeeds);
         }
-        currentPick++;
     }
 
     function makeUserPick(playerId) {
