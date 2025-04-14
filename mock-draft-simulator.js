@@ -119,19 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
         isUserTurn = false;
         draftPicks = [];
         updateDraftBoard();
-        simulateAIPicks();
-    }
-
-    function simulateAIPicks() {
-        // Find the current team's next pick
+        
+        // Find the first pick for the selected team
         const currentTeamData = teams.find(t => t.name === currentTeam);
         if (!currentTeamData) return;
         
-        const nextUserPick = currentTeamData.picks.find(pick => pick > currentPick);
-        if (!nextUserPick) return; // No more user picks
+        const firstUserPick = currentTeamData.picks[0];
         
-        // Simulate AI picks until next user pick
-        while (currentPick < nextUserPick) {
+        // Simulate AI picks until first user pick
+        while (currentPick < firstUserPick) {
             const team = teams.find(t => t.picks.includes(currentPick));
             if (team) {
                 makeAIPick(team);
@@ -152,18 +148,25 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (availablePlayersForTeam.length > 0) {
             // Sort by position rank and pick the best available
-            availablePlayersForTeam.sort((a, b) => a.positionRank - b.positionRank);
+            availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
             const selectedPlayer = availablePlayersForTeam[0];
             
             // Add pick to draft board
-            addPickToBoard(currentPick, team.name, selectedPlayer.name, 
-                          selectedPlayer.position, selectedPlayer.college, false);
+            draftPicks.push({
+                team: team.name,
+                name: selectedPlayer.name,
+                position: selectedPlayer.position,
+                school: selectedPlayer.school
+            });
             
             // Remove player from available players
-            availablePlayers = availablePlayers.filter(p => p.id !== selectedPlayer.id);
+            availablePlayers = availablePlayers.filter(p => 
+                p.name !== selectedPlayer.name
+            );
             
             // Update UI
-            updateAvailablePlayers();
+            updateDraftBoard();
+            updateAvailablePlayersTable();
             updateDraftStatus();
         }
     }
