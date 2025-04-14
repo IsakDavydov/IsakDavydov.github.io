@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fetch team data
         fetch('data/teams.json')
             .then(response => response.json())
-            .then(teams => {
-                const team = teams.find(t => t.name === currentTeam);
+            .then(data => {
+                const team = data.teams.find(t => t.name === currentTeam);
                 if (team) {
                     teamName.textContent = team.name;
                     teamPick.textContent = `Pick #${team.draftPick}`;
