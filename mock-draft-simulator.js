@@ -67,9 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
             availablePlayers = data.players.map(player => ({
                 name: player.name,
                 position: player.position,
-                school: player.school,
-                rank: player.rank,
-                description: player.description
+                school: player.college,
+                rank: player.pos_rank,
+                height: player.height,
+                weight: player.weight
             }));
             updateAvailablePlayersTable();
         })
@@ -190,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             Draft
                         </button>
                         <div class="text-sm text-gray-600">
-                            <p class="font-medium">Best Fits:</p>
-                            <p class="text-xs">${player.teamFits.join(', ')}</p>
+                            <p class="font-medium">Physical:</p>
+                            <p class="text-xs">${player.height}, ${player.weight}</p>
                         </div>
                     </div>
                 </td>
