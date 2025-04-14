@@ -1,0 +1,196 @@
+{
+    "teams": [
+        {
+            "name": "Tennessee Titans",
+            "pick": 1,
+            "needs": ["QB", "OT", "WR"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Cleveland Browns",
+            "pick": 2,
+            "needs": ["EDGE", "WR", "CB"],
+            "conference": "AFC"
+        },
+        {
+            "name": "New York Giants",
+            "pick": 3,
+            "needs": ["EDGE", "QB", "OT"],
+            "conference": "NFC"
+        },
+        {
+            "name": "New England Patriots",
+            "pick": 4,
+            "needs": ["OT", "QB", "WR"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Jacksonville Jaguars",
+            "pick": 5,
+            "needs": ["DT", "CB", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Las Vegas Raiders",
+            "pick": 6,
+            "needs": ["RB", "QB", "OT"],
+            "conference": "AFC"
+        },
+        {
+            "name": "New York Jets",
+            "pick": 7,
+            "needs": ["TE", "OT", "WR"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Carolina Panthers",
+            "pick": 8,
+            "needs": ["LB", "WR", "CB"],
+            "conference": "NFC"
+        },
+        {
+            "name": "New Orleans Saints",
+            "pick": 9,
+            "needs": ["QB", "OT", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Chicago Bears",
+            "pick": 10,
+            "needs": ["CB", "WR", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "San Francisco 49ers",
+            "pick": 11,
+            "needs": ["OT", "EDGE", "CB"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Dallas Cowboys",
+            "pick": 12,
+            "needs": ["WR", "OT", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Miami Dolphins",
+            "pick": 13,
+            "needs": ["OT", "DT", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Indianapolis Colts",
+            "pick": 14,
+            "needs": ["TE", "CB", "WR"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Atlanta Falcons",
+            "pick": 15,
+            "needs": ["LB", "QB", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Arizona Cardinals",
+            "pick": 16,
+            "needs": ["EDGE", "WR", "CB"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Cincinnati Bengals",
+            "pick": 17,
+            "needs": ["DT", "OT", "TE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Seattle Seahawks",
+            "pick": 18,
+            "needs": ["WR", "OT", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Tampa Bay Buccaneers",
+            "pick": 19,
+            "needs": ["OG", "EDGE", "OT"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Denver Broncos",
+            "pick": 20,
+            "needs": ["RB", "QB", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Pittsburgh Steelers",
+            "pick": 21,
+            "needs": ["DT", "OT", "CB"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Los Angeles Chargers",
+            "pick": 22,
+            "needs": ["DT", "EDGE", "OT"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Green Bay Packers",
+            "pick": 23,
+            "needs": ["EDGE", "CB", "S"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Minnesota Vikings",
+            "pick": 24,
+            "needs": ["CB", "QB", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Houston Texans",
+            "pick": 25,
+            "needs": ["WR", "CB", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Los Angeles Rams",
+            "pick": 26,
+            "needs": ["QB", "EDGE", "OT"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Baltimore Ravens",
+            "pick": 27,
+            "needs": ["EDGE", "OT", "WR"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Detroit Lions",
+            "pick": 28,
+            "needs": ["EDGE", "CB", "WR"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Washington Commanders",
+            "pick": 29,
+            "needs": ["CB", "OT", "EDGE"],
+            "conference": "NFC"
+        },
+        {
+            "name": "Buffalo Bills",
+            "pick": 30,
+            "needs": ["OG", "WR", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Kansas City Chiefs",
+            "pick": 31,
+            "needs": ["OT", "WR", "EDGE"],
+            "conference": "AFC"
+        },
+        {
+            "name": "Philadelphia Eagles",
+            "pick": 32,
+            "needs": ["S", "CB", "EDGE"],
+            "conference": "NFC"
+        }
+    ]
+} 
