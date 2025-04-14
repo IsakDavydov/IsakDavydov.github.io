@@ -389,7 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function simulateAIPicks() {
-        console.log('Simulating AI picks after user selection...');
+        console.log('=== IN SIMULATE AI PICKS ===');
+        console.log('Current state:', { currentPick, isUserTurn });
+        
         // Find the current team's next pick
         const currentTeamData = teams.find(t => t.name === currentTeam);
         if (!currentTeamData) {
@@ -406,13 +408,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        console.log('Calling simulateNextAIPicks...');
         // Simulate AI picks until next user pick
         simulateNextAIPicks(nextUserPick);
     }
 
     function simulateNextAIPicks(nextUserPick) {
+        console.log('=== IN SIMULATE NEXT AI PICKS ===');
+        console.log('Current state:', { currentPick, isUserTurn, nextUserPick });
+        
         if (currentPick >= nextUserPick) {
-            // It's user's turn
+            console.log('Reached user pick, setting isUserTurn to true');
             isUserTurn = true;
             updateDraftStatus();
             return;
@@ -420,22 +426,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const team = teams.find(t => t.pick === currentPick);
         if (team) {
-            console.log('Making AI pick for team:', team.name);
+            console.log('Found team for pick:', team.name);
             makeAIPick(team);
         } else {
             console.log('No team found for pick:', currentPick);
             currentPick++;
         }
         
+        console.log('Setting up next AI pick...');
         // Use setTimeout to prevent UI freezing
         setTimeout(() => {
+            console.log('Calling simulateNextAIPicks again...');
             simulateNextAIPicks(nextUserPick);
         }, 100);
     }
 
     // Global functions for draft actions
     window.draftPlayer = function(name, position, school) {
+        console.log('=== STARTING DRAFT PLAYER ===');
         console.log('Drafting player:', { name, position, school });
+        console.log('Current state:', { currentTeam, currentPick, isUserTurn });
+        
         if (!currentTeam) {
             alert('Please select a team first');
             return;
@@ -467,8 +478,12 @@ document.addEventListener('DOMContentLoaded', () => {
         isUserTurn = false;
         updateDraftStatus();
         
+        console.log('State after user pick:', { currentPick, isUserTurn });
+        console.log('Calling simulateAIPicks...');
+        
         // Simulate next AI picks
         setTimeout(() => {
+            console.log('=== STARTING AI PICKS ===');
             simulateAIPicks();
         }, 100);
     };
