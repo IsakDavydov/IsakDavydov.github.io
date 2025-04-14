@@ -113,16 +113,24 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select a team first');
             return;
         }
+        
+        // Reset state
         teamInfo.classList.remove('hidden');
-        updateTeamInfo();
         currentPick = 1;
         isUserTurn = false;
         draftPicks = [];
+        
+        // Update UI
+        updateTeamInfo();
         updateDraftBoard();
+        updateDraftStatus();
         
         // Find the team's pick
         const currentTeamData = teams.find(t => t.name === currentTeam);
-        if (!currentTeamData) return;
+        if (!currentTeamData) {
+            console.error('Team data not found for:', currentTeam);
+            return;
+        }
         
         const teamPick = currentTeamData.pick;
         console.log('Team pick number:', teamPick);
@@ -213,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.log('No available players for team needs:', teamNeeds);
         }
+        currentPick++;
     }
 
     function makeUserPick(playerId) {
