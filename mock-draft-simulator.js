@@ -1,5 +1,8 @@
 // Mock Draft Simulator
+console.log('Mock Draft Simulator script loaded');
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
     // Initialize state
     let currentDraft = {
         team: null,
@@ -21,10 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamPick = document.getElementById('team-pick');
     const teamNeeds = document.getElementById('team-needs');
 
+    console.log('DOM Elements:', {
+        teamSelect,
+        startDraftBtn,
+        saveDraftBtn,
+        resetDraftBtn,
+        playerSearch,
+        draftBoard,
+        availablePlayersTable,
+        teamInfo,
+        teamLogo,
+        teamName,
+        teamPick,
+        teamNeeds
+    });
+
     // Load teams data
     fetch('data/teams.json')
-        .then(response => response.json())
+        .then(response => {
+            console.log('Teams response:', response);
+            return response.json();
+        })
         .then(data => {
+            console.log('Teams data:', data);
             data.teams.forEach(team => {
                 const option = document.createElement('option');
                 option.value = team.name;
@@ -36,8 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load players data
     fetch('data/player-profiles-v2.json')
-        .then(response => response.json())
+        .then(response => {
+            console.log('Players response:', response);
+            return response.json();
+        })
         .then(data => {
+            console.log('Players data:', data);
             currentDraft.availablePlayers = data.players.map(player => ({
                 name: player.name,
                 position: player.position,
@@ -58,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Functions
     function startDraft() {
+        console.log('Start Draft clicked');
         if (!currentDraft.team) {
             alert('Please select a team first');
             return;
@@ -68,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveDraft() {
+        console.log('Save Draft clicked');
         if (currentDraft.picks.length === 0) {
             alert('No picks to save');
             return;
@@ -82,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resetDraft() {
+        console.log('Reset Draft clicked');
         if (confirm('Are you sure you want to reset the draft?')) {
             currentDraft.picks = [];
             currentDraft.availablePlayers = [...currentDraft.availablePlayers, ...currentDraft.picks];
@@ -91,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterPlayers() {
+        console.log('Filter Players:', playerSearch.value);
         const searchTerm = playerSearch.value.toLowerCase();
         const filteredPlayers = currentDraft.availablePlayers.filter(player => 
             player.name.toLowerCase().includes(searchTerm) ||
@@ -101,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTeamInfo() {
+        console.log('Update Team Info:', teamSelect.value);
         const selectedTeam = teamSelect.value;
         if (!selectedTeam) {
             teamInfo.classList.add('hidden');
@@ -126,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateDraftBoard() {
+        console.log('Update Draft Board:', currentDraft.picks);
         draftBoard.innerHTML = currentDraft.picks.length === 0 ? 
             '<div class="text-center text-gray-500 py-8">Select a team to start your mock draft</div>' :
             currentDraft.picks.map((pick, index) => `
@@ -147,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateAvailablePlayersTable(players = currentDraft.availablePlayers) {
+        console.log('Update Available Players:', players);
         availablePlayersTable.innerHTML = players.map(player => `
             <tr class="hover:bg-gray-50">
                 <td class="px-4 py-3">${player.rank}</td>
@@ -165,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Global functions for button clicks
     window.draftPlayer = function(playerName) {
+        console.log('Draft Player:', playerName);
         const player = currentDraft.availablePlayers.find(p => p.name === playerName);
         if (player) {
             currentDraft.picks.push(player);
@@ -175,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.removePick = function(index) {
+        console.log('Remove Pick:', index);
         const pick = currentDraft.picks[index];
         currentDraft.picks.splice(index, 1);
         currentDraft.availablePlayers.push(pick);
