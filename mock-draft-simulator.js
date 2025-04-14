@@ -176,7 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTeamData = teams.find(t => t.name === currentTeam);
         if (!currentTeamData) return;
         
-        const nextUserPick = currentTeamData.pick + 1; // Next round
+        // Calculate next user pick (32 picks later)
+        const nextUserPick = currentTeamData.pick + 32;
         if (nextUserPick > 32) return; // End of first round
         
         // Simulate AI picks until next user pick
