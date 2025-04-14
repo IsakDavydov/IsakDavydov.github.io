@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTeam = null;
     let draftPicks = [];
     let availablePlayers = [];
+    let teams = [];
+    let currentPick = 1;
+    let isUserTurn = false;
     
     // DOM Elements
     const teamSelect = document.getElementById('team-select');
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamName = document.getElementById('team-name');
     const teamPick = document.getElementById('team-pick');
     const teamNeeds = document.getElementById('team-needs');
+    const draftStatus = document.getElementById('draft-status');
     
     console.log('DOM elements loaded:', {
         teamSelect,
@@ -33,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         teamInfo,
         teamName,
         teamPick,
-        teamNeeds
+        teamNeeds,
+        draftStatus
     });
 
     // Load teams data
@@ -44,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             console.log('Teams data loaded:', data);
+            teams = data.teams;
             // Populate team select
             data.teams.forEach(team => {
                 const option = document.createElement('option');
@@ -109,6 +115,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         teamInfo.classList.remove('hidden');
         updateTeamInfo();
+        currentPick = 1;
+        isUserTurn = false;
+        draftPicks = [];
+        updateDraftBoard();
+        simulateAIPicks();
+    }
+
+    function simulateAIPicks() {
+        const currentTeamData = teams.find(t => t.name === currentTeam);
+        const currentTeamPick = currentTeamData.pick;
+        
+        while (currentPick < currentTeamPick) {
+            const team = teams.find(t => t.pick === currentPick);
+            if (team) {
+                makeAIPick(team);
+            }
+            currentPick++;
+        }
+        
+        isUserTurn = true;
+        updateDraftStatus();
+    }
+
+    function makeAIPick(team) {
+        const teamNeeds = team.needs;
+        const availablePlayersForTeam = availablePlayers.filter(player => 
+            teamNeeds.includes(player.position)
+        );
+        
+        if (availablePlayersForTeam.length > 0) {
+            // Sort by position rank and pick the best available player that fits team needs
+            availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
+            const selectedPlayer = availablePlayersForTeam[0];
+            
+            draftPicks.push({
+                team: team.name,
+                name: selectedPlayer.name,
+                position: selectedPlayer.position,
+                school: selectedPlayer.school
+            });
+            
+            // Remove the selected player from available players
+            availablePlayers = availablePlayers.filter(player => 
+                player.name !== selectedPlayer.name
+            );
+            
+            updateDraftBoard();
+            updateAvailablePlayersTable();
+        }
+    }
+
+    function updateDraftStatus() {
+        if (isUserTurn) {
+            draftStatus.textContent = `It's your turn to pick! (Pick #${currentPick})`;
+            draftStatus.className = 'text-green-600 font-semibold';
+        } else {
+            draftStatus.textContent = `Waiting for AI picks... (Pick #${currentPick})`;
+            draftStatus.className = 'text-gray-600';
+        }
     }
 
     function saveDraft() {
@@ -129,9 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Resetting draft');
         draftPicks = [];
         currentTeam = null;
+        currentPick = 1;
+        isUserTurn = false;
         teamInfo.classList.add('hidden');
         updateDraftBoard();
         updateAvailablePlayersTable();
+        draftStatus.textContent = '';
     }
 
     function filterPlayers() {
@@ -155,19 +223,22 @@ document.addEventListener('DOMContentLoaded', () => {
         draftPicks.forEach((pick, index) => {
             const pickElement = document.createElement('div');
             pickElement.className = 'flex items-center justify-between p-4 border-b';
+            const isUserPick = pick.team === currentTeam;
             pickElement.innerHTML = `
                 <div class="flex items-center gap-4">
                     <span class="font-semibold">${index + 1}.</span>
-                    <span>${pick.team}</span>
+                    <span class="${isUserPick ? 'text-blue-600 font-semibold' : ''}">${pick.team}</span>
                 </div>
                 <div class="flex items-center gap-4">
                     <span>${pick.name}</span>
                     <span class="text-gray-600">${pick.position}</span>
                     <span class="text-gray-600">${pick.school}</span>
                 </div>
-                <button onclick="removePick(${index})" class="text-red-600 hover:text-red-800">
-                    Remove
-                </button>
+                ${isUserPick ? `
+                    <button onclick="removePick(${index})" class="text-red-600 hover:text-red-800">
+                        Remove
+                    </button>
+                ` : ''}
             `;
             draftBoard.appendChild(pickElement);
         });
@@ -203,19 +274,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTeamInfo() {
         console.log('Updating team info for:', currentTeam);
-        // Fetch team data
-        fetch('data/teams.json')
-            .then(response => response.json())
-            .then(data => {
-                const team = data.teams.find(t => t.name === currentTeam);
-                if (team) {
-                    teamName.textContent = team.name;
-                    teamPick.textContent = `Pick #${team.draftPick}`;
-                    teamNeeds.innerHTML = team.needs.map(need => 
-                        `<span class="bg-gray-200 px-2 py-1 rounded text-sm">${need}</span>`
-                    ).join('');
-                }
-            });
+        const team = teams.find(t => t.name === currentTeam);
+        if (team) {
+            teamName.textContent = team.name;
+            teamPick.textContent = `Pick #${team.pick}`;
+            teamNeeds.innerHTML = team.needs.map(need => 
+                `<span class="bg-gray-200 px-2 py-1 rounded text-sm">${need}</span>`
+            ).join('');
+        }
     }
 
     // Global functions for draft actions
@@ -225,21 +291,52 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select a team first');
             return;
         }
+        if (!isUserTurn) {
+            alert('It\'s not your turn to pick yet!');
+            return;
+        }
+        
         draftPicks.push({
             team: currentTeam,
             name,
             position,
             school
         });
+        
+        // Remove the selected player from available players
+        availablePlayers = availablePlayers.filter(player => 
+            player.name !== name
+        );
+        
+        currentPick++;
+        isUserTurn = false;
         updateDraftBoard();
         updateAvailablePlayersTable();
+        updateDraftStatus();
+        
+        // Simulate next AI picks
+        setTimeout(() => {
+            simulateAIPicks();
+        }, 1000);
     };
 
     window.removePick = function(index) {
         console.log('Removing pick at index:', index);
-        draftPicks.splice(index, 1);
-        updateDraftBoard();
-        updateAvailablePlayersTable();
+        const pick = draftPicks[index];
+        if (pick.team === currentTeam) {
+            // Add the player back to available players
+            availablePlayers.push({
+                name: pick.name,
+                position: pick.position,
+                school: pick.school,
+                rank: pick.rank,
+                height: pick.height,
+                weight: pick.weight
+            });
+            draftPicks.splice(index, 1);
+            updateDraftBoard();
+            updateAvailablePlayersTable();
+        }
     };
 
     window.closeAnalysisModal = function() {
