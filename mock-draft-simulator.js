@@ -171,6 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function simulateAIPicks() {
+        // Find the current team's next pick
+        const currentTeamData = teams.find(t => t.name === currentTeam);
+        if (!currentTeamData) return;
+        
+        const nextUserPick = currentTeamData.pick + 1; // Next round
+        if (nextUserPick > 32) return; // End of first round
+        
+        // Simulate AI picks until next user pick
+        while (currentPick < nextUserPick) {
+            const team = teams.find(t => t.pick === currentPick);
+            if (team) {
+                makeAIPick(team);
+            }
+            currentPick++;
+        }
+        
+        // It's user's turn
+        isUserTurn = true;
+        updateDraftStatus();
+    }
+
     function makeUserPick(playerId) {
         if (!isUserTurn) {
             alert("It's not your turn to pick!");
@@ -184,14 +206,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add pick to draft board
-        addPickToBoard(currentPick, currentTeam, player.name, 
-                      player.position, player.college, true);
+        draftPicks.push({
+            team: currentTeam,
+            name: player.name,
+            position: player.position,
+            school: player.school
+        });
         
         // Remove player from available players
         availablePlayers = availablePlayers.filter(p => p.id !== playerId);
         
         // Update UI
-        updateAvailablePlayers();
+        updateDraftBoard();
+        updateAvailablePlayersTable();
         updateDraftStatus();
         
         // Move to next pick and continue simulation
@@ -349,9 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDraftStatus();
         
         // Simulate next AI picks
-        setTimeout(() => {
-            simulateAIPicks();
-        }, 1000);
+        simulateAIPicks();
     };
 
     window.removePick = function(index) {
