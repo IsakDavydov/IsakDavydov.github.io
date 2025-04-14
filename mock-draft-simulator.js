@@ -140,7 +140,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDraftStatus();
     }
 
+    function simulateAIPicks() {
+        console.log('Simulating AI picks...');
+        // Find the current team's next pick
+        const currentTeamData = teams.find(t => t.name === currentTeam);
+        if (!currentTeamData) {
+            console.log('No team data found for:', currentTeam);
+            return;
+        }
+        
+        // Calculate next user pick (32 picks later)
+        const nextUserPick = currentTeamData.pick + 32;
+        console.log('Current pick:', currentPick, 'Next user pick:', nextUserPick);
+        
+        if (nextUserPick > 32) {
+            console.log('End of first round reached');
+            return;
+        }
+        
+        // Simulate AI picks until next user pick
+        while (currentPick < nextUserPick) {
+            console.log('Processing pick:', currentPick);
+            const team = teams.find(t => t.pick === currentPick);
+            if (team) {
+                console.log('Making AI pick for team:', team.name);
+                makeAIPick(team);
+            } else {
+                console.log('No team found for pick:', currentPick);
+                currentPick++;
+            }
+        }
+        
+        // It's user's turn
+        isUserTurn = true;
+        updateDraftStatus();
+    }
+
     function makeAIPick(team) {
+        console.log('Making AI pick for team:', team.name);
         const teamNeeds = team.needs;
         const availablePlayersForTeam = availablePlayers.filter(player => 
             teamNeeds.includes(player.position)
@@ -150,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sort by position rank and pick the best available
             availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
             const selectedPlayer = availablePlayersForTeam[0];
+            console.log('AI selected player:', selectedPlayer.name);
             
             // Add pick to draft board
             draftPicks.push({
@@ -168,32 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDraftBoard();
             updateAvailablePlayersTable();
             updateDraftStatus();
+        } else {
+            console.log('No available players for team needs:', teamNeeds);
         }
-    }
-
-    function simulateAIPicks() {
-        // Find the current team's next pick
-        const currentTeamData = teams.find(t => t.name === currentTeam);
-        if (!currentTeamData) return;
-        
-        // Calculate next user pick (32 picks later)
-        const nextUserPick = currentTeamData.pick + 32;
-        if (nextUserPick > 32) return; // End of first round
-        
-        // Simulate AI picks until next user pick
-        while (currentPick < nextUserPick) {
-            const team = teams.find(t => t.pick === currentPick);
-            if (team) {
-                makeAIPick(team);
-            } else {
-                // If no team found for this pick, just increment
-                currentPick++;
-            }
-        }
-        
-        // It's user's turn
-        isUserTurn = true;
-        updateDraftStatus();
+        currentPick++;
     }
 
     function makeUserPick(playerId) {
