@@ -136,54 +136,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Team pick number:', teamPick);
         
         // Simulate AI picks until team's pick
-        while (currentPick < teamPick) {
-            const team = teams.find(t => t.pick === currentPick);
-            if (team) {
-                console.log('Making initial AI pick for team:', team.name);
-                makeAIPick(team);
-            }
-            currentPick++;
-        }
-        
-        // It's user's turn
-        isUserTurn = true;
-        updateDraftStatus();
+        simulateInitialAIPicks(teamPick);
     }
 
-    function simulateAIPicks() {
-        console.log('Simulating AI picks...');
-        // Find the current team's next pick
-        const currentTeamData = teams.find(t => t.name === currentTeam);
-        if (!currentTeamData) {
-            console.log('No team data found for:', currentTeam);
+    function simulateInitialAIPicks(teamPick) {
+        if (currentPick >= teamPick) {
+            // It's user's turn
+            isUserTurn = true;
+            updateDraftStatus();
             return;
         }
-        
-        // Calculate next user pick (32 picks later)
-        const nextUserPick = currentTeamData.pick + 32;
-        console.log('Current pick:', currentPick, 'Next user pick:', nextUserPick);
-        
-        if (nextUserPick > 32) {
-            console.log('End of first round reached');
-            return;
+
+        const team = teams.find(t => t.pick === currentPick);
+        if (team) {
+            console.log('Making initial AI pick for team:', team.name);
+            makeAIPick(team);
         }
         
-        // Simulate AI picks until next user pick
-        while (currentPick < nextUserPick) {
-            console.log('Processing pick:', currentPick);
-            const team = teams.find(t => t.pick === currentPick);
-            if (team) {
-                console.log('Making AI pick for team:', team.name);
-                makeAIPick(team);
-            } else {
-                console.log('No team found for pick:', currentPick);
-                currentPick++;
-            }
-        }
+        currentPick++;
         
-        // It's user's turn
-        isUserTurn = true;
-        updateDraftStatus();
+        // Use setTimeout to prevent UI freezing
+        setTimeout(() => {
+            simulateInitialAIPicks(teamPick);
+        }, 100);
     }
 
     function makeAIPick(team) {
