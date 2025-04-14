@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateAvailablePlayersTable(filteredPlayers);
     }
 
-    function updateDraftBoard(showAll = false) {
+    function updateDraftBoard(forceShowAll = false) {
         console.log('Updating draft board with picks:', draftPicks);
         draftBoard.innerHTML = '';
         if (draftPicks.length === 0) {
@@ -327,10 +327,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Show only the most recent 10 picks by default
         const recentPicks = draftPicks.slice(-10);
-        const showAll = showAll || draftPicks.length <= 10;
+        const shouldShowAll = forceShowAll || draftPicks.length <= 10;
 
         // Add "View All" button if there are more than 10 picks
-        if (!showAll) {
+        if (!shouldShowAll) {
             const viewAllButton = document.createElement('button');
             viewAllButton.className = 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors mb-4';
             viewAllButton.textContent = 'View All Picks';
@@ -345,13 +345,13 @@ document.addEventListener('DOMContentLoaded', () => {
         picksContainer.className = 'space-y-2';
 
         // Show either all picks or just recent ones
-        const picksToShow = showAll ? draftPicks : recentPicks;
+        const picksToShow = shouldShowAll ? draftPicks : recentPicks;
         
         picksToShow.forEach((pick, index) => {
             const pickElement = document.createElement('div');
             pickElement.className = 'flex items-center justify-between p-4 border-b';
             const isUserPick = pick.team === currentTeam;
-            const actualIndex = showAll ? index : draftPicks.length - 10 + index;
+            const actualIndex = shouldShowAll ? index : draftPicks.length - 10 + index;
             pickElement.innerHTML = `
                 <div class="flex items-center gap-4">
                     <span class="font-semibold">${actualIndex + 1}.</span>
