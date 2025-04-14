@@ -452,15 +452,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Calculate the current round
+        // Calculate the current round and pick within that round
         const currentRound = Math.ceil(currentPick / 32);
-        // Find the team whose pick it is in this round
-        const team = teams.find(t => {
-            // For rounds after the first, we need to calculate the pick number
-            const roundOffset = (currentRound - 1) * 32;
-            return t.pick === (currentPick - roundOffset);
-        });
+        const pickInRound = ((currentPick - 1) % 32) + 1;
+        console.log('Current round:', currentRound, 'Pick in round:', pickInRound);
 
+        // Find the team whose pick it is in this round
+        const team = teams.find(t => t.pick === pickInRound);
+        
         if (team) {
             console.log('Found team for pick:', team.name, 'in round', currentRound);
             makeAIPick(team);
