@@ -406,6 +406,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Updating team info for:', currentTeam);
         const team = teams.find(t => t.name === currentTeam);
         if (team) {
+            // Clear existing content
+            teamInfo.innerHTML = '';
+            
+            // Add basic team info
             teamName.textContent = team.name;
             teamPick.textContent = `Pick #${team.pick}`;
             teamNeeds.innerHTML = team.needs.map(need => 
