@@ -317,20 +317,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateAvailablePlayersTable(filteredPlayers);
     }
 
-    function updateDraftBoard() {
+    function updateDraftBoard(showAll = false) {
         console.log('Updating draft board with picks:', draftPicks);
         draftBoard.innerHTML = '';
         if (draftPicks.length === 0) {
             draftBoard.innerHTML = '<div class="text-center text-gray-500 py-8">Select a team to start your mock draft</div>';
             return;
         }
-        draftPicks.forEach((pick, index) => {
+
+        // Show only the most recent 10 picks by default
+        const recentPicks = draftPicks.slice(-10);
+        const showAll = showAll || draftPicks.length <= 10;
+
+        // Add "View All" button if there are more than 10 picks
+        if (!showAll) {
+            const viewAllButton = document.createElement('button');
+            viewAllButton.className = 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors mb-4';
+            viewAllButton.textContent = 'View All Picks';
+            viewAllButton.onclick = () => {
+                updateDraftBoard(true);
+            };
+            draftBoard.appendChild(viewAllButton);
+        }
+
+        // Create the picks container
+        const picksContainer = document.createElement('div');
+        picksContainer.className = 'space-y-2';
+
+        // Show either all picks or just recent ones
+        const picksToShow = showAll ? draftPicks : recentPicks;
+        
+        picksToShow.forEach((pick, index) => {
             const pickElement = document.createElement('div');
             pickElement.className = 'flex items-center justify-between p-4 border-b';
             const isUserPick = pick.team === currentTeam;
+            const actualIndex = showAll ? index : draftPicks.length - 10 + index;
             pickElement.innerHTML = `
                 <div class="flex items-center gap-4">
-                    <span class="font-semibold">${index + 1}.</span>
+                    <span class="font-semibold">${actualIndex + 1}.</span>
                     <span class="${isUserPick ? 'text-blue-600 font-semibold' : ''}">${pick.team}</span>
                 </div>
                 <div class="flex items-center gap-4">
@@ -339,13 +363,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="text-gray-600">${pick.school}</span>
                 </div>
                 ${isUserPick ? `
-                    <button onclick="removePick(${index})" class="text-red-600 hover:text-red-800">
+                    <button onclick="removePick(${actualIndex})" class="text-red-600 hover:text-red-800">
                         Remove
                     </button>
                 ` : ''}
             `;
-            draftBoard.appendChild(pickElement);
+            picksContainer.appendChild(pickElement);
         });
+
+        draftBoard.appendChild(picksContainer);
     }
 
     function updateAvailablePlayersTable(players = availablePlayers) {
