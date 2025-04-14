@@ -76,7 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 school: player.college,
                 rank: player.pos_rank,
                 height: player.height,
-                weight: player.weight
+                weight: player.weight,
+                // Add overall rank for top prospects
+                overallRank: player.name === 'Travis Hunter' ? 1 : 
+                           player.name === 'Caleb Williams' ? 2 :
+                           player.name === 'Drake Maye' ? 3 :
+                           player.name === 'Marvin Harrison Jr.' ? 4 :
+                           player.name === 'Joe Alt' ? 5 :
+                           player.pos_rank + 100 // Default to position rank + 100 for other players
             }));
             updateAvailablePlayersTable();
         })
@@ -165,6 +172,37 @@ document.addEventListener('DOMContentLoaded', () => {
     function makeAIPick(team) {
         console.log('Making AI pick for team:', team.name);
         const teamNeeds = team.needs;
+        
+        // First, check if any top prospects are available
+        const topProspects = availablePlayers.filter(player => player.overallRank <= 5);
+        if (topProspects.length > 0) {
+            // Sort by overall rank and pick the best available
+            topProspects.sort((a, b) => a.overallRank - b.overallRank);
+            const selectedPlayer = topProspects[0];
+            console.log('AI selected top prospect:', selectedPlayer.name);
+            
+            // Add pick to draft board
+            draftPicks.push({
+                team: team.name,
+                name: selectedPlayer.name,
+                position: selectedPlayer.position,
+                school: selectedPlayer.school
+            });
+            
+            // Remove player from available players
+            availablePlayers = availablePlayers.filter(p => 
+                p.name !== selectedPlayer.name
+            );
+            
+            // Update UI
+            updateDraftBoard();
+            updateAvailablePlayersTable();
+            updateDraftStatus();
+            currentPick++;
+            return;
+        }
+        
+        // If no top prospects, proceed with team needs
         const availablePlayersForTeam = availablePlayers.filter(player => 
             teamNeeds.includes(player.position)
         );
