@@ -403,11 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextUserPick = currentTeamData.pick + 32;
         console.log('Current pick:', currentPick, 'Next user pick:', nextUserPick);
         
-        if (nextUserPick > 32) {
-            console.log('End of first round reached');
-            return;
-        }
-        
+        // Remove the first round check - we want to continue simulating
         console.log('Calling simulateNextAIPicks...');
         // Simulate AI picks until next user pick
         simulateNextAIPicks(nextUserPick);
