@@ -531,6 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update UI
         updateDraftBoard();
         updateAvailablePlayersTable();
+        updateTeamInfo();
         
         // Move to next pick and continue simulation
         currentPick++;
