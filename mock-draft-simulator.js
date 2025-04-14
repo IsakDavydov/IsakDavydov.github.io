@@ -123,17 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function simulateAIPicks() {
+        // Find the current team's next pick
         const currentTeamData = teams.find(t => t.name === currentTeam);
-        const currentTeamPick = currentTeamData.pick;
+        if (!currentTeamData) return;
         
-        while (currentPick < currentTeamPick) {
-            const team = teams.find(t => t.pick === currentPick);
+        const nextUserPick = currentTeamData.picks.find(pick => pick > currentPick);
+        if (!nextUserPick) return; // No more user picks
+        
+        // Simulate AI picks until next user pick
+        while (currentPick < nextUserPick) {
+            const team = teams.find(t => t.picks.includes(currentPick));
             if (team) {
                 makeAIPick(team);
             }
             currentPick++;
         }
         
+        // It's user's turn
         isUserTurn = true;
         updateDraftStatus();
     }
@@ -145,25 +151,50 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         
         if (availablePlayersForTeam.length > 0) {
-            // Sort by position rank and pick the best available player that fits team needs
-            availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
+            // Sort by position rank and pick the best available
+            availablePlayersForTeam.sort((a, b) => a.positionRank - b.positionRank);
             const selectedPlayer = availablePlayersForTeam[0];
             
-            draftPicks.push({
-                team: team.name,
-                name: selectedPlayer.name,
-                position: selectedPlayer.position,
-                school: selectedPlayer.school
-            });
+            // Add pick to draft board
+            addPickToBoard(currentPick, team.name, selectedPlayer.name, 
+                          selectedPlayer.position, selectedPlayer.college, false);
             
-            // Remove the selected player from available players
-            availablePlayers = availablePlayers.filter(player => 
-                player.name !== selectedPlayer.name
-            );
+            // Remove player from available players
+            availablePlayers = availablePlayers.filter(p => p.id !== selectedPlayer.id);
             
-            updateDraftBoard();
-            updateAvailablePlayersTable();
+            // Update UI
+            updateAvailablePlayers();
+            updateDraftStatus();
         }
+    }
+
+    function makeUserPick(playerId) {
+        if (!isUserTurn) {
+            alert("It's not your turn to pick!");
+            return;
+        }
+
+        const player = availablePlayers.find(p => p.id === playerId);
+        if (!player) {
+            alert("Player not found!");
+            return;
+        }
+
+        // Add pick to draft board
+        addPickToBoard(currentPick, currentTeam, player.name, 
+                      player.position, player.college, true);
+        
+        // Remove player from available players
+        availablePlayers = availablePlayers.filter(p => p.id !== playerId);
+        
+        // Update UI
+        updateAvailablePlayers();
+        updateDraftStatus();
+        
+        // Move to next pick and continue simulation
+        currentPick++;
+        isUserTurn = false;
+        simulateAIPicks();
     }
 
     function updateDraftStatus() {
