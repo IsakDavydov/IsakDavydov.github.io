@@ -184,10 +184,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td class="px-4 py-3">${player.position}</td>
                 <td class="px-4 py-3">${player.school}</td>
                 <td class="px-4 py-3">
-                    <button onclick="draftPlayer('${player.name}', '${player.position}', '${player.school}')" 
-                            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors">
-                        Draft
-                    </button>
+                    <div class="space-y-2">
+                        <button onclick="draftPlayer('${player.name}', '${player.position}', '${player.school}')" 
+                                class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors">
+                            Draft
+                        </button>
+                        <div class="text-sm text-gray-600">
+                            <p class="font-medium">Best Fits:</p>
+                            <p class="text-xs">${player.teamFits.join(', ')}</p>
+                        </div>
+                    </div>
                 </td>
             `;
             availablePlayersTable.appendChild(row);
