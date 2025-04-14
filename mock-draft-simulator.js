@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 height: player.height,
                 weight: player.weight,
                 // Add overall rank for top prospects
-                overallRank: player.name === 'Travis Hunter' ? 1 : 
-                           player.name === 'Caleb Williams' ? 2 :
-                           player.name === 'Drake Maye' ? 3 :
-                           player.name === 'Marvin Harrison Jr.' ? 4 :
-                           player.name === 'Joe Alt' ? 5 :
+                overallRank: player.name === 'Cam Ward' ? 1 : 
+                           player.name === 'Travis Hunter' ? 2 :
+                           player.name === 'Abdul Carter' ? 3 :
+                           player.name === 'Will Campbell' ? 4 :
+                           player.name === 'Mason Graham' ? 5 :
                            player.pos_rank + 100 // Default to position rank + 100 for other players
             }));
             updateAvailablePlayersTable();
