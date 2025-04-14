@@ -411,6 +411,30 @@ document.addEventListener('DOMContentLoaded', () => {
             teamNeeds.innerHTML = team.needs.map(need => 
                 `<span class="bg-gray-200 px-2 py-1 rounded text-sm">${need}</span>`
             ).join('');
+
+            // Add "Your Picks" section
+            const userPicks = draftPicks.filter(pick => pick.team === currentTeam);
+            const yourPicksSection = document.createElement('div');
+            yourPicksSection.className = 'mt-6';
+            yourPicksSection.innerHTML = `
+                <h3 class="text-lg font-semibold mb-2">Your Picks</h3>
+                <div class="space-y-2">
+                    ${userPicks.map((pick, index) => `
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                            <div class="flex items-center gap-4">
+                                <span class="font-semibold">${index + 1}.</span>
+                                <span>${pick.name}</span>
+                                <span class="text-gray-600">${pick.position}</span>
+                                <span class="text-gray-600">${pick.school}</span>
+                            </div>
+                            <button onclick="removePick(${draftPicks.indexOf(pick)})" class="text-red-600 hover:text-red-800">
+                                Remove
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            teamInfo.appendChild(yourPicksSection);
         }
     }
 
