@@ -348,6 +348,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function simulateAIPicks() {
+        console.log('Simulating AI picks after user selection...');
+        // Find the current team's next pick
+        const currentTeamData = teams.find(t => t.name === currentTeam);
+        if (!currentTeamData) {
+            console.error('No team data found for:', currentTeam);
+            return;
+        }
+        
+        // Calculate next user pick (32 picks later)
+        const nextUserPick = currentTeamData.pick + 32;
+        console.log('Current pick:', currentPick, 'Next user pick:', nextUserPick);
+        
+        if (nextUserPick > 32) {
+            console.log('End of first round reached');
+            return;
+        }
+        
+        // Simulate AI picks until next user pick
+        simulateNextAIPicks(nextUserPick);
+    }
+
+    function simulateNextAIPicks(nextUserPick) {
+        if (currentPick >= nextUserPick) {
+            // It's user's turn
+            isUserTurn = true;
+            updateDraftStatus();
+            return;
+        }
+
+        const team = teams.find(t => t.pick === currentPick);
+        if (team) {
+            console.log('Making AI pick for team:', team.name);
+            makeAIPick(team);
+        }
+        
+        currentPick++;
+        
+        // Use setTimeout to prevent UI freezing
+        setTimeout(() => {
+            simulateNextAIPicks(nextUserPick);
+        }, 100);
+    }
+
     // Global functions for draft actions
     window.draftPlayer = function(name, position, school) {
         console.log('Drafting player:', { name, position, school });
