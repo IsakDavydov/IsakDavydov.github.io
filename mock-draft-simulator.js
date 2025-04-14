@@ -357,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        // Add pick to draft board
         draftPicks.push({
             team: currentTeam,
             name,
@@ -369,10 +370,13 @@ document.addEventListener('DOMContentLoaded', () => {
             player.name !== name
         );
         
-        currentPick++;
-        isUserTurn = false;
+        // Update UI
         updateDraftBoard();
         updateAvailablePlayersTable();
+        
+        // Move to next pick and continue simulation
+        currentPick++;
+        isUserTurn = false;
         updateDraftStatus();
         
         // Simulate next AI picks
