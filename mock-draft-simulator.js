@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Teams data response:', response);
             return response.json();
         })
-        .then(teams => {
-            console.log('Teams data loaded:', teams);
+        .then(data => {
+            console.log('Teams data loaded:', data);
             // Populate team select
-            teams.forEach(team => {
+            data.teams.forEach(team => {
                 const option = document.createElement('option');
                 option.value = team.name;
                 option.textContent = team.name;
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Players data response:', response);
             return response.json();
         })
-        .then(players => {
-            console.log('Players data loaded:', players);
-            availablePlayers = players.map(player => ({
+        .then(data => {
+            console.log('Players data loaded:', data);
+            availablePlayers = data.players.map(player => ({
                 name: player.name,
                 position: player.position,
                 school: player.school,
