@@ -100,10 +100,16 @@ function showPlayerProfile(playerName) {
     document.getElementById('modal-weight').textContent = player.weight;
     document.getElementById('modal-age').textContent = player.age;
 
-    // Update description
+    // Update description with basic information
     const statsContainer = document.getElementById('modal-stats');
     statsContainer.innerHTML = `
-        <p class="text-gray-700">${player.description}</p>
+        <div class="space-y-2">
+            <p><span class="font-medium">Position:</span> ${player.position}</p>
+            <p><span class="font-medium">College:</span> ${player.college}</p>
+            <p><span class="font-medium">Height:</span> ${player.height}</p>
+            <p><span class="font-medium">Weight:</span> ${player.weight}</p>
+            <p><span class="font-medium">Age:</span> ${player.age}</p>
+        </div>
     `;
 
     // Show modal
