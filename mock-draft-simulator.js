@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Calculate next user pick based on current round
         const currentRound = Math.ceil(currentPick / 32);
-        const nextUserPick = currentTeamData.pick + ((currentRound) * 32);
+        const nextUserPick = currentTeamData.pick + ((currentRound - 1) * 32);
         console.log('Current pick:', currentPick, 'Current round:', currentRound, 'Next user pick:', nextUserPick);
         
         // If we've reached the end of the draft (257 total picks)
