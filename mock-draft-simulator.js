@@ -502,10 +502,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Find the team whose pick it is
-        const team = teams.find(t => {
-            // Check if this team has this pick number in any round
-            return t.picks.some(p => p.pick === currentPick);
-        });
+        const currentRound = Math.ceil(currentPick / 32);
+        const pickInRound = currentPick % 32 || 32; // Get pick number within current round (1-32)
+        const team = teams.find(t => t.pick === pickInRound);
         
         if (team) {
             console.log('Found team for pick:', team.name, 'at pick', currentPick);
