@@ -181,18 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedPlayer = topProspects[0];
             console.log('AI selected top prospect:', selectedPlayer.name);
             
-            // Add pick to draft board
+            // Add pick to draft board with all player data
             draftPicks.push({
                 team: team.name,
                 name: selectedPlayer.name,
                 position: selectedPlayer.position,
-                school: selectedPlayer.school
+                school: selectedPlayer.school,
+                rank: selectedPlayer.rank,
+                height: selectedPlayer.height,
+                weight: selectedPlayer.weight
             });
             
             // Remove player from available players
-            availablePlayers = availablePlayers.filter(p => 
-                p.name !== selectedPlayer.name
-            );
+            availablePlayers = availablePlayers.filter(p => p.name !== selectedPlayer.name);
             
             // Update UI
             updateDraftBoard();
@@ -213,18 +214,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedPlayer = availablePlayersForTeam[0];
             console.log('AI selected player:', selectedPlayer.name);
             
-            // Add pick to draft board
+            // Add pick to draft board with all player data
             draftPicks.push({
                 team: team.name,
                 name: selectedPlayer.name,
                 position: selectedPlayer.position,
-                school: selectedPlayer.school
+                school: selectedPlayer.school,
+                rank: selectedPlayer.rank,
+                height: selectedPlayer.height,
+                weight: selectedPlayer.weight
             });
             
             // Remove player from available players
-            availablePlayers = availablePlayers.filter(p => 
-                p.name !== selectedPlayer.name
-            );
+            availablePlayers = availablePlayers.filter(p => p.name !== selectedPlayer.name);
             
             // Update UI
             updateDraftBoard();
@@ -410,35 +412,75 @@ document.addEventListener('DOMContentLoaded', () => {
             teamInfo.innerHTML = '';
             
             // Add basic team info
-            teamName.textContent = team.name;
-            teamPick.textContent = `Pick #${team.pick}`;
-            teamNeeds.innerHTML = team.needs.map(need => 
-                `<span class="bg-gray-200 px-2 py-1 rounded text-sm">${need}</span>`
-            ).join('');
+            const teamInfoContent = document.createElement('div');
+            teamInfoContent.innerHTML = `
+                <h2 class="text-xl font-bold mb-4">${team.name}</h2>
+                <p class="text-gray-600 mb-2">Pick #${team.pick}</p>
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">Team Needs:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        ${team.needs.map(need => 
+                            `<span class="bg-gray-200 px-2 py-1 rounded text-sm">${need}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+            teamInfo.appendChild(teamInfoContent);
 
             // Add "Your Picks" section
             const userPicks = draftPicks.filter(pick => pick.team === currentTeam);
-            const yourPicksSection = document.createElement('div');
-            yourPicksSection.className = 'mt-6';
-            yourPicksSection.innerHTML = `
-                <h3 class="text-lg font-semibold mb-2">Your Picks</h3>
-                <div class="space-y-2">
-                    ${userPicks.map((pick, index) => `
-                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
-                            <div class="flex items-center gap-4">
-                                <span class="font-semibold">${index + 1}.</span>
-                                <span>${pick.name}</span>
-                                <span class="text-gray-600">${pick.position}</span>
-                                <span class="text-gray-600">${pick.school}</span>
+            if (userPicks.length > 0) {
+                const yourPicksSection = document.createElement('div');
+                yourPicksSection.className = 'mt-6';
+                yourPicksSection.innerHTML = `
+                    <h3 class="text-lg font-semibold mb-2">Your Picks</h3>
+                    <div class="space-y-2">
+                        ${userPicks.map((pick, index) => `
+                            <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                                <div class="flex items-center gap-4">
+                                    <span class="font-semibold">${index + 1}.</span>
+                                    <span>${pick.name}</span>
+                                    <span class="text-gray-600">${pick.position}</span>
+                                    <span class="text-gray-600">${pick.school}</span>
+                                </div>
+                                <button onclick="removePick(${draftPicks.indexOf(pick)})" class="text-red-600 hover:text-red-800">
+                                    Remove
+                                </button>
                             </div>
-                            <button onclick="removePick(${draftPicks.indexOf(pick)})" class="text-red-600 hover:text-red-800">
-                                Remove
-                            </button>
-                        </div>
-                    `).join('')}
+                        `).join('')}
+                    </div>
+                `;
+                teamInfo.appendChild(yourPicksSection);
+            }
+
+            // Add "Team Picks" section showing all teams' selections
+            const teamPicksSection = document.createElement('div');
+            teamPicksSection.className = 'mt-6';
+            teamPicksSection.innerHTML = `
+                <h3 class="text-lg font-semibold mb-2">Team Picks</h3>
+                <div class="space-y-4">
+                    ${teams.map(team => {
+                        const teamPicks = draftPicks.filter(pick => pick.team === team.name);
+                        return `
+                            <div class="bg-gray-50 p-3 rounded">
+                                <h4 class="font-semibold mb-2">${team.name}</h4>
+                                <div class="space-y-2">
+                                    ${teamPicks.map((pick, index) => `
+                                        <div class="flex items-center gap-4 text-sm">
+                                            <span class="font-medium">${index + 1}.</span>
+                                            <span>${pick.name}</span>
+                                            <span class="text-gray-600">${pick.position}</span>
+                                            <span class="text-gray-600">${pick.school}</span>
+                                        </div>
+                                    `).join('')}
+                                    ${teamPicks.length === 0 ? '<p class="text-gray-500 text-sm">No picks yet</p>' : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
                 </div>
             `;
-            teamInfo.appendChild(yourPicksSection);
+            teamInfo.appendChild(teamPicksSection);
         }
     }
 
@@ -492,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Found team for pick:', team.name, 'in round', currentRound);
             makeAIPick(team);
         } else {
-            console.log('No team found for pick:', currentPick);
+            console.log('No team found for pick:', currentPick, 'in round', currentRound);
             currentPick++;
         }
         
@@ -519,18 +561,26 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Add pick to draft board
+        // Find the player in availablePlayers to get all their data
+        const player = availablePlayers.find(p => p.name === name);
+        if (!player) {
+            console.error('Player not found in availablePlayers:', name);
+            return;
+        }
+        
+        // Add pick to draft board with all player data
         draftPicks.push({
             team: currentTeam,
-            name,
-            position,
-            school
+            name: player.name,
+            position: player.position,
+            school: player.school,
+            rank: player.rank,
+            height: player.height,
+            weight: player.weight
         });
         
         // Remove the selected player from available players
-        availablePlayers = availablePlayers.filter(player => 
-            player.name !== name
-        );
+        availablePlayers = availablePlayers.filter(p => p.name !== name);
         
         // Update UI
         updateDraftBoard();
