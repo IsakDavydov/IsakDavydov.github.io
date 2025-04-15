@@ -203,6 +203,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        // Check for falling players (players ranked much higher than their position)
+        const fallingPlayers = availablePlayers.filter(player => {
+            // If a player is ranked in the top 3 at their position and we're past pick 32
+            // or ranked in the top 5 at their position and we're past pick 64
+            return (player.rank <= 3 && currentPick > 32) || 
+                   (player.rank <= 5 && currentPick > 64);
+        });
+        
+        if (fallingPlayers.length > 0) {
+            // Sort by position rank and pick the best falling player
+            fallingPlayers.sort((a, b) => a.rank - b.rank);
+            const selectedPlayer = fallingPlayers[0];
+            console.log('AI selected falling player:', selectedPlayer.name);
+            
+            // Add pick to draft board with all player data
+            draftPicks.push({
+                team: team.name,
+                name: selectedPlayer.name,
+                position: selectedPlayer.position,
+                school: selectedPlayer.school,
+                rank: selectedPlayer.rank,
+                height: selectedPlayer.height,
+                weight: selectedPlayer.weight
+            });
+            
+            // Remove player from available players
+            availablePlayers = availablePlayers.filter(p => p.name !== selectedPlayer.name);
+            
+            // Update UI
+            updateDraftBoard();
+            updateAvailablePlayersTable();
+            updateDraftStatus();
+            currentPick++;
+            return;
+        }
+        
         // Map team needs to player positions
         const mappedNeeds = teamNeeds.map(need => {
             if (need === 'IOL') return ['OG', 'C'];
@@ -210,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return [need];
         }).flat();
         
-        // If no top prospects, proceed with team needs
+        // If no top prospects or falling players, proceed with team needs
         const availablePlayersForTeam = availablePlayers.filter(player => 
             mappedNeeds.includes(player.position)
         );
@@ -262,7 +298,34 @@ document.addEventListener('DOMContentLoaded', () => {
             updateAvailablePlayersTable();
             updateDraftStatus();
         } else {
-            console.log('No available players for team needs:', teamNeeds);
+            // If no players match team needs, take best available player regardless of position
+            console.log('No players match team needs, taking best available player');
+            const bestAvailable = [...availablePlayers].sort((a, b) => a.rank - b.rank)[0];
+            
+            if (bestAvailable) {
+                console.log('AI selected best available player:', bestAvailable.name);
+                
+                // Add pick to draft board with all player data
+                draftPicks.push({
+                    team: team.name,
+                    name: bestAvailable.name,
+                    position: bestAvailable.position,
+                    school: bestAvailable.school,
+                    rank: bestAvailable.rank,
+                    height: bestAvailable.height,
+                    weight: bestAvailable.weight
+                });
+                
+                // Remove player from available players
+                availablePlayers = availablePlayers.filter(p => p.name !== bestAvailable.name);
+                
+                // Update UI
+                updateDraftBoard();
+                updateAvailablePlayersTable();
+                updateDraftStatus();
+            } else {
+                console.log('No available players at all');
+            }
         }
         currentPick++;
     }
