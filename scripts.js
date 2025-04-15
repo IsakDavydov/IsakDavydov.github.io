@@ -26,7 +26,7 @@ async function loadPlayerData() {
         const timestamp = new Date().getTime();
         const [rankingsResponse, profilesResponse] = await Promise.all([
             fetch(`data/player-rankings.json?t=${timestamp}`),
-            fetch(`data/player-profiles-v2.json?t=${timestamp}`)
+            fetch(`data/player-profiles.json?t=${timestamp}`)
         ]);
 
         if (!rankingsResponse.ok || !profilesResponse.ok) {
@@ -96,20 +96,14 @@ function showPlayerProfile(playerName) {
 
     // Update modal content
     document.getElementById('modal-player-name').textContent = player.name;
-    document.getElementById('modal-height').textContent = `${player.height} (${player.height})`;
-    document.getElementById('modal-weight').textContent = `${player.weight} lbs`;
-    document.getElementById('modal-age').textContent = player.year || 'N/A';
+    document.getElementById('modal-height').textContent = player.height;
+    document.getElementById('modal-weight').textContent = player.weight;
+    document.getElementById('modal-age').textContent = player.age;
 
     // Update description
     const statsContainer = document.getElementById('modal-stats');
     statsContainer.innerHTML = `
-        <p class="text-gray-700">
-            <span class="font-medium">Position Rank:</span> ${player.pos_rank}<br>
-            <span class="font-medium">College:</span> ${player.college}<br>
-            <span class="font-medium">Year:</span> ${player.year || 'N/A'}<br>
-            <span class="font-medium">Height:</span> ${player.height}<br>
-            <span class="font-medium">Weight:</span> ${player.weight} lbs
-        </p>
+        <p class="text-gray-700">${player.description}</p>
     `;
 
     // Show modal
