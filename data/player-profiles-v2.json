@@ -43,7 +43,7 @@
     {
       "id": 5,
       "name": "Mason Graham",
-      "position": "DL",
+      "position": "DT",
       "college": "Michigan",
       "year": "Jr",
       "pos_rank": 1,
@@ -163,7 +163,7 @@
     {
       "id": 17,
       "name": "Walter Nolen",
-      "position": "DL",
+      "position": "DT",
       "college": "Ole Miss",
       "year": "Jr",
       "pos_rank": 2,
@@ -233,7 +233,7 @@
     {
       "id": 24,
       "name": "Tyler Booker",
-      "position": "IOL",
+      "position": "OG",
       "college": "Alabama",
       "year": "Jr",
       "pos_rank": 1,
@@ -283,7 +283,7 @@
     {
       "id": 29,
       "name": "Grey Zabel",
-      "position": "IOL",
+      "position": "OG",
       "college": "N. Dakota St.",
       "year": "Sr",
       "pos_rank": 2,
@@ -293,7 +293,7 @@
     {
       "id": 30,
       "name": "Derrick Harmon",
-      "position": "DL",
+      "position": "DT",
       "college": "Oregon",
       "year": "Jr",
       "pos_rank": 3,
@@ -323,7 +323,7 @@
     {
       "id": 33,
       "name": "Kenneth Grant",
-      "position": "DL",
+      "position": "DT",
       "college": "Michigan",
       "year": "Jr",
       "pos_rank": 4,
@@ -373,7 +373,7 @@
     {
       "id": 38,
       "name": "Donovan Jackson",
-      "position": "IOL",
+      "position": "OG",
       "college": "Ohio State",
       "year": "Sr",
       "pos_rank": 3,
@@ -403,7 +403,7 @@
     {
       "id": 41,
       "name": "Omarr Norman-Lott",
-      "position": "DL",
+      "position": "DT",
       "college": "Tennessee",
       "year": "Sr",
       "pos_rank": 5,
@@ -433,7 +433,7 @@
     {
       "id": 44,
       "name": "Darius Alexander",
-      "position": "DL",
+      "position": "DT",
       "college": "Toledo",
       "year": "Sr",
       "pos_rank": 6,
@@ -463,7 +463,7 @@
     {
       "id": 47,
       "name": "CJ West",
-      "position": "DL",
+      "position": "DT",
       "college": "Indiana",
       "year": "Sr",
       "pos_rank": 7,
@@ -503,7 +503,7 @@
     {
       "id": 51,
       "name": "Tyleik Williams",
-      "position": "DL",
+      "position": "DT",
       "college": "Ohio State",
       "year": "Sr",
       "pos_rank": 8,
@@ -523,7 +523,7 @@
     {
       "id": 53,
       "name": "T.J. Sanders",
-      "position": "DL",
+      "position": "DT",
       "college": "South Carolina",
       "year": "Jr",
       "pos_rank": 9,
@@ -533,7 +533,7 @@
     {
       "id": 54,
       "name": "Deone Walker",
-      "position": "DL",
+      "position": "DT",
       "college": "Kentucky",
       "year": "Jr",
       "pos_rank": 10,
@@ -583,7 +583,7 @@
     {
       "id": 59,
       "name": "Emery Jones Jr.",
-      "position": "IOL",
+      "position": "OG",
       "college": "LSU",
       "year": "Jr",
       "pos_rank": 4,
@@ -593,7 +593,7 @@
     {
       "id": 60,
       "name": "Wyatt Milum",
-      "position": "IOL",
+      "position": "OG",
       "college": "West Virginia",
       "year": "Sr",
       "pos_rank": 5,
@@ -613,7 +613,7 @@
     {
       "id": 62,
       "name": "Alfred Collins",
-      "position": "DL",
+      "position": "DT",
       "college": "Texas",
       "year": "Sr",
       "pos_rank": 11,
@@ -703,7 +703,7 @@
     {
       "id": 71,
       "name": "Jonah Savaiinaea",
-      "position": "IOL",
+      "position": "OG",
       "college": "Arizona",
       "year": "Jr",
       "pos_rank": 6,
@@ -743,7 +743,7 @@
     {
       "id": 75,
       "name": "Vernon Broughton",
-      "position": "DL",
+      "position": "DT",
       "college": "Texas",
       "year": "Sr",
       "pos_rank": 12,
@@ -813,7 +813,7 @@
     {
       "id": 82,
       "name": "Aeneas Peebles",
-      "position": "DL",
+      "position": "DT",
       "college": "Virginia Tech",
       "year": "Sr",
       "pos_rank": 13,
@@ -833,7 +833,7 @@
     {
       "id": 84,
       "name": "Sai'vion Jones",
-      "position": "DL",
+      "position": "DT",
       "college": "LSU",
       "year": "Sr",
       "pos_rank": 14,
@@ -853,7 +853,7 @@
     {
       "id": 86,
       "name": "Jared Wilson",
-      "position": "IOL",
+      "position": "OG",
       "college": "Georgia",
       "year": "Jr",
       "pos_rank": 7,
@@ -903,7 +903,7 @@
     {
       "id": 91,
       "name": "Joshua Farmer",
-      "position": "DL",
+      "position": "DT",
       "college": "Florida State",
       "year": "Jr",
       "pos_rank": 15,
@@ -1033,7 +1033,7 @@
     {
       "id": 104,
       "name": "JJ Pegues",
-      "position": "DL",
+      "position": "DT",
       "college": "Ole Miss",
       "year": "Sr",
       "pos_rank": 16,
@@ -1073,7 +1073,7 @@
     {
       "id": 108,
       "name": "Jordan Burch",
-      "position": "DL",
+      "position": "DT",
       "college": "Oregon",
       "year": "Sr",
       "pos_rank": 17,
@@ -1113,7 +1113,7 @@
     {
       "id": 112,
       "name": "Shemar Turner",
-      "position": "DL",
+      "position": "DT",
       "college": "Texas A&M",
       "year": "Sr",
       "pos_rank": 18,
@@ -1133,7 +1133,7 @@
     {
       "id": 114,
       "name": "Jalen Rivers",
-      "position": "IOL",
+      "position": "OG",
       "college": "Miami (Fla.)",
       "year": "Jr",
       "pos_rank": 8,
@@ -1153,7 +1153,7 @@
     {
       "id": 116,
       "name": "Miles Frazier",
-      "position": "IOL",
+      "position": "OG",
       "college": "LSU",
       "year": "Sr",
       "pos_rank": 9,
@@ -1203,7 +1203,7 @@
     {
       "id": 121,
       "name": "Anthony Belton",
-      "position": "IOL",
+      "position": "OG",
       "college": "NC State",
       "year": "Sr",
       "pos_rank": 10,
@@ -1263,7 +1263,7 @@
     {
       "id": 127,
       "name": "Ty Robinson",
-      "position": "DL",
+      "position": "DT",
       "college": "Nebraska",
       "year": "Sr",
       "pos_rank": 19,
@@ -1283,7 +1283,7 @@
     {
       "id": 129,
       "name": "Ajani Cornelius",
-      "position": "IOL",
+      "position": "OG",
       "college": "Oregon",
       "year": "Sr",
       "pos_rank": 11,
@@ -1313,7 +1313,7 @@
     {
       "id": 132,
       "name": "Tate Ratledge",
-      "position": "IOL",
+      "position": "OG",
       "college": "Georgia",
       "year": "Sr",
       "pos_rank": 12,
@@ -1323,7 +1323,7 @@
     {
       "id": 133,
       "name": "Clay Webb",
-      "position": "IOL",
+      "position": "OG",
       "college": "Jacksonville St.",
       "year": "Sr",
       "pos_rank": 13,
@@ -1503,7 +1503,7 @@
     {
       "id": 151,
       "name": "Dylan Fairchild",
-      "position": "IOL",
+      "position": "OG",
       "college": "Georgia",
       "year": "Jr",
       "pos_rank": 14,
@@ -1513,7 +1513,7 @@
     {
       "id": 152,
       "name": "Tonka Hemingway",
-      "position": "DL",
+      "position": "DT",
       "college": "South Carolina",
       "year": "Sr",
       "pos_rank": 20,
@@ -1573,7 +1573,7 @@
     {
       "id": 158,
       "name": "Howard Cross III",
-      "position": "DL",
+      "position": "DT",
       "college": "Notre Dame",
       "year": "Sr",
       "pos_rank": 21,
@@ -1803,7 +1803,7 @@
     {
       "id": 181,
       "name": "Jordan Phillips",
-      "position": "DL",
+      "position": "DT",
       "college": "Maryland",
       "year": "Soph",
       "pos_rank": 22,
@@ -1853,7 +1853,7 @@
     {
       "id": 186,
       "name": "Jamaree Caldwell",
-      "position": "DL",
+      "position": "DT",
       "college": "Oregon",
       "year": "Sr",
       "pos_rank": 23,
@@ -1883,7 +1883,7 @@
     {
       "id": 189,
       "name": "Jackson Slater",
-      "position": "IOL",
+      "position": "OG",
       "college": "Sacramento St.",
       "year": "Sr",
       "pos_rank": 15,
@@ -1923,7 +1923,7 @@
     {
       "id": 193,
       "name": "Tyrion Ingram-Dawkins",
-      "position": "DL",
+      "position": "DT",
       "college": "Georgia",
       "year": "Jr",
       "pos_rank": 24,
@@ -1983,7 +1983,7 @@
     {
       "id": 199,
       "name": "Jared Harrison-Hunte",
-      "position": "DL",
+      "position": "DT",
       "college": "SMU",
       "year": "Sr",
       "pos_rank": 25,
@@ -2003,7 +2003,7 @@
     {
       "id": 201,
       "name": "Rylie Mills",
-      "position": "DL",
+      "position": "DT",
       "college": "Notre Dame",
       "year": "Sr",
       "pos_rank": 26,
@@ -2053,7 +2053,7 @@
     {
       "id": 206,
       "name": "Eric Gregory",
-      "position": "DL",
+      "position": "DT",
       "college": "Arkansas",
       "year": "Sr",
       "pos_rank": 27,
@@ -2063,7 +2063,7 @@
     {
       "id": 207,
       "name": "Cam Jackson",
-      "position": "DL",
+      "position": "DT",
       "college": "Florida",
       "year": "Sr",
       "pos_rank": 28,
@@ -2163,7 +2163,7 @@
     {
       "id": 217,
       "name": "Gus Hartwig",
-      "position": "IOL",
+      "position": "OG",
       "college": "Purdue",
       "year": "Sr",
       "pos_rank": 16,
@@ -2183,7 +2183,7 @@
     {
       "id": 219,
       "name": "Connor Colby",
-      "position": "IOL",
+      "position": "OG",
       "college": "Iowa",
       "year": "Sr",
       "pos_rank": 17,
@@ -2273,7 +2273,7 @@
     {
       "id": 228,
       "name": "Luke Kandra",
-      "position": "IOL",
+      "position": "OG",
       "college": "Cincinnati",
       "year": "Sr",
       "pos_rank": 18,
@@ -2303,7 +2303,7 @@
     {
       "id": 231,
       "name": "Fadil Diggs",
-      "position": "DL",
+      "position": "DT",
       "college": "Syracuse",
       "year": "Sr",
       "pos_rank": 29,
@@ -2343,7 +2343,7 @@
     {
       "id": 235,
       "name": "Warren Brinson",
-      "position": "DL",
+      "position": "DT",
       "college": "Georgia",
       "year": "Sr",
       "pos_rank": 30,
@@ -2363,7 +2363,7 @@
     {
       "id": 237,
       "name": "Ty Hamilton",
-      "position": "DL",
+      "position": "DT",
       "college": "Ohio State",
       "year": "Sr",
       "pos_rank": 31,
@@ -2393,7 +2393,7 @@
     {
       "id": 240,
       "name": "Marcus Wehr",
-      "position": "IOL",
+      "position": "OG",
       "college": "Montana St.",
       "year": "Sr",
       "pos_rank": 19,
@@ -2513,7 +2513,7 @@
     {
       "id": 252,
       "name": "Eli Cox",
-      "position": "IOL",
+      "position": "OG",
       "college": "Kentucky",
       "year": "Sr",
       "pos_rank": 20,
@@ -2533,7 +2533,7 @@
     {
       "id": 254,
       "name": "Zeek Biggers",
-      "position": "DL",
+      "position": "DT",
       "college": "Georgia Tech",
       "year": "Sr",
       "pos_rank": 32,
@@ -2573,7 +2573,7 @@
     {
       "id": 258,
       "name": "Nash Hutmacher",
-      "position": "DL",
+      "position": "DT",
       "college": "Nebraska",
       "year": "Sr",
       "pos_rank": 33,
