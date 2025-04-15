@@ -451,36 +451,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 teamInfo.appendChild(yourPicksSection);
+            } else {
+                const noPicksSection = document.createElement('div');
+                noPicksSection.className = 'mt-6';
+                noPicksSection.innerHTML = `
+                    <h3 class="text-lg font-semibold mb-2">Your Picks</h3>
+                    <p class="text-gray-500">No picks yet</p>
+                `;
+                teamInfo.appendChild(noPicksSection);
             }
-
-            // Add "Team Picks" section showing all teams' selections
-            const teamPicksSection = document.createElement('div');
-            teamPicksSection.className = 'mt-6';
-            teamPicksSection.innerHTML = `
-                <h3 class="text-lg font-semibold mb-2">Team Picks</h3>
-                <div class="space-y-4">
-                    ${teams.map(team => {
-                        const teamPicks = draftPicks.filter(pick => pick.team === team.name);
-                        return `
-                            <div class="bg-gray-50 p-3 rounded">
-                                <h4 class="font-semibold mb-2">${team.name}</h4>
-                                <div class="space-y-2">
-                                    ${teamPicks.map((pick, index) => `
-                                        <div class="flex items-center gap-4 text-sm">
-                                            <span class="font-medium">${index + 1}.</span>
-                                            <span>${pick.name}</span>
-                                            <span class="text-gray-600">${pick.position}</span>
-                                            <span class="text-gray-600">${pick.school}</span>
-                                        </div>
-                                    `).join('')}
-                                    ${teamPicks.length === 0 ? '<p class="text-gray-500 text-sm">No picks yet</p>' : ''}
-                                </div>
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            `;
-            teamInfo.appendChild(teamPicksSection);
         }
     }
 
