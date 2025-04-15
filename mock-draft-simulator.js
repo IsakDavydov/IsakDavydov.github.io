@@ -203,9 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        // Map team needs to player positions
+        const mappedNeeds = teamNeeds.map(need => {
+            if (need === 'IOL') return 'OG';
+            if (need === 'DL') return 'DT';
+            return need;
+        });
+        
         // If no top prospects, proceed with team needs
         const availablePlayersForTeam = availablePlayers.filter(player => 
-            teamNeeds.includes(player.position)
+            mappedNeeds.includes(player.position)
         );
         
         if (availablePlayersForTeam.length > 0) {
