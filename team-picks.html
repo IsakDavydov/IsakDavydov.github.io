@@ -52,10 +52,15 @@
                             const card = document.createElement('div');
                             card.className = 'bg-white rounded-lg shadow-md p-4';
                             card.innerHTML = `
-                                <div class="flex items-center">
-                                    <div>
-                                        <h3 class="text-lg font-semibold">${team.name}</h3>
-                                        <p class="text-sm text-gray-600">${team.picks.join(', ')}</p>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-2">${team.name}</h3>
+                                    <div class="space-y-2">
+                                        ${team.picks.map(pick => `
+                                            <div class="flex justify-between text-sm">
+                                                <span>Round ${pick.round}</span>
+                                                <span>Pick #${pick.pick}</span>
+                                            </div>
+                                        `).join('')}
                                     </div>
                                 </div>
                             `;
