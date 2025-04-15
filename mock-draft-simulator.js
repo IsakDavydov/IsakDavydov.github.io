@@ -216,9 +216,31 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         
         if (availablePlayersForTeam.length > 0) {
-            // Sort by position rank and pick the best available
+            // Sort by position rank
             availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
-            const selectedPlayer = availablePlayersForTeam[0];
+            
+            // Add randomness to selection based on pick number
+            let selectedPlayer;
+            if (currentPick <= 3) {
+                // Always take best available for top 3 picks
+                selectedPlayer = availablePlayersForTeam[0];
+            } else {
+                // For picks after top 3, introduce variability
+                const topThreePlayers = availablePlayersForTeam.slice(0, 3);
+                const randomFactor = Math.random();
+                
+                if (randomFactor < 0.6) {
+                    // 60% chance to take best available
+                    selectedPlayer = availablePlayersForTeam[0];
+                } else if (randomFactor < 0.85) {
+                    // 25% chance to take second best
+                    selectedPlayer = availablePlayersForTeam[1] || availablePlayersForTeam[0];
+                } else {
+                    // 15% chance to take third best
+                    selectedPlayer = availablePlayersForTeam[2] || availablePlayersForTeam[0];
+                }
+            }
+            
             console.log('AI selected player:', selectedPlayer.name);
             
             // Add pick to draft board with all player data
