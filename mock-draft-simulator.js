@@ -548,41 +548,70 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (averageScore >= 70) grade = 'C';
         else if (averageScore >= 60) grade = 'D';
         
-        // Display results
-        const resultsContainer = document.createElement('div');
-        resultsContainer.className = 'mt-8 p-6 bg-white rounded-lg shadow';
-        resultsContainer.innerHTML = `
-            <h2 class="text-2xl font-bold mb-4">Draft Results</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold mb-2">Final Grade: ${grade}</h3>
-                <p class="text-gray-600">Average Score: ${averageScore.toFixed(1)}</p>
-            </div>
-            <div class="space-y-4">
-                <h3 class="text-lg font-semibold">Your Picks:</h3>
-                ${pickGrades.map(pick => `
-                    <div class="p-4 border rounded">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="font-semibold">${pick.pick}.</span>
-                                <span class="ml-2">${pick.player}</span>
-                                <span class="text-gray-600 ml-2">${pick.position}</span>
-                                <span class="text-gray-600 ml-2">${pick.school}</span>
-                            </div>
-                            <span class="font-semibold">Score: ${pick.score}</span>
-                        </div>
+        // Create and show modal
+        const modal = document.createElement('div');
+        modal.id = 'draft-results-modal';
+        modal.className = 'fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center';
+        modal.innerHTML = `
+            <div class="relative p-8 bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold">Draft Results</h2>
+                    <button onclick="document.getElementById('draft-results-modal').remove()" 
+                            class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="mb-8 p-6 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-semibold">Final Grade: ${grade}</h3>
+                        <span class="text-xl text-gray-600">Average Score: ${averageScore.toFixed(1)}</span>
                     </div>
-                `).join('')}
+                    <p class="text-gray-600">${getGradeDescription(grade)}</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-4">Your Picks:</h3>
+                    ${pickGrades.map(pick => `
+                        <div class="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold text-lg">${pick.pick}.</span>
+                                    <span class="ml-2 text-lg">${pick.player}</span>
+                                    <span class="text-gray-600 ml-2">${pick.position}</span>
+                                    <span class="text-gray-600 ml-2">${pick.school}</span>
+                                </div>
+                                <span class="font-semibold text-lg">Score: ${pick.score}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         `;
         
-        // Clear existing content and show results
-        teamInfo.innerHTML = '';
-        teamInfo.appendChild(resultsContainer);
+        document.body.appendChild(modal);
         
         // Disable draft controls
         startDraftBtn.disabled = true;
         saveDraftBtn.disabled = true;
         playerSearch.disabled = true;
+    }
+
+    function getGradeDescription(grade) {
+        switch(grade) {
+            case 'A':
+                return 'Excellent draft! You selected top prospects and filled key team needs.';
+            case 'B':
+                return 'Good draft! You made solid picks that should help your team.';
+            case 'C':
+                return 'Average draft. Some good picks but room for improvement.';
+            case 'D':
+                return 'Below average draft. Consider focusing more on team needs and top prospects.';
+            default:
+                return 'Poor draft. Try focusing on team needs and top prospects next time.';
+        }
     }
 
     async function simulateNextAIPicks(nextUserPick) {
