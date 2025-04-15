@@ -205,10 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Map team needs to player positions
         const mappedNeeds = teamNeeds.map(need => {
-            if (need === 'IOL') return 'OG';
-            if (need === 'DL') return 'DT';
-            return need;
-        });
+            if (need === 'IOL') return ['OG', 'C'];
+            if (need === 'DL') return ['DT', 'DE'];
+            return [need];
+        }).flat();
         
         // If no top prospects, proceed with team needs
         const availablePlayersForTeam = availablePlayers.filter(player => 
@@ -519,7 +519,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Bonus points for filling team needs
             const team = teams.find(t => t.name === currentTeam);
-            if (team.needs.includes(pick.position)) {
+            const mappedNeeds = team.needs.map(need => {
+                if (need === 'IOL') return ['OG', 'C'];
+                if (need === 'DL') return ['DT', 'DE'];
+                return [need];
+            }).flat();
+            
+            if (mappedNeeds.includes(pick.position)) {
                 score += 10;
             }
             
