@@ -500,8 +500,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextUserPick = currentTeamData.pick + ((currentRound) * 32);
         console.log('Current pick:', currentPick, 'Current round:', currentRound, 'Next user pick:', nextUserPick);
         
-        // If we've reached the end of the draft (7 rounds * 32 picks = 224)
-        if (currentPick > 224) {
+        // If we've reached the end of the draft (257 total picks)
+        if (currentPick > 257) {
             console.log('End of draft reached');
             return;
         }
@@ -522,19 +522,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Calculate the current round and pick within that round
-        const currentRound = Math.ceil(currentPick / 32);
-        const pickInRound = ((currentPick - 1) % 32) + 1;
-        console.log('Current round:', currentRound, 'Pick in round:', pickInRound);
-
-        // Find the team whose pick it is in this round
-        const team = teams.find(t => t.pick === pickInRound);
+        // Find the team whose pick it is
+        const team = teams.find(t => {
+            // Check if this team has this pick number in any round
+            return t.picks.some(p => p.pick === currentPick);
+        });
         
         if (team) {
-            console.log('Found team for pick:', team.name, 'in round', currentRound);
+            console.log('Found team for pick:', team.name, 'at pick', currentPick);
             makeAIPick(team);
         } else {
-            console.log('No team found for pick:', currentPick, 'in round', currentRound);
+            console.log('No team found for pick:', currentPick);
             currentPick++;
         }
         
