@@ -553,40 +553,42 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.id = 'draft-results-modal';
         modal.className = 'fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center';
         modal.innerHTML = `
-            <div class="relative p-8 bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-3xl font-bold">Draft Results</h2>
+            <div class="relative p-6 bg-white rounded-lg shadow-xl max-w-3xl w-full mx-4 my-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold">Draft Results</h2>
                     <button onclick="document.getElementById('draft-results-modal').remove()" 
                             class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
                 
-                <div class="mb-8 p-6 bg-gray-50 rounded-lg">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-2xl font-semibold">Final Grade: ${grade}</h3>
-                        <span class="text-xl text-gray-600">Average Score: ${averageScore.toFixed(1)}</span>
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-xl font-semibold">Final Grade: ${grade}</h3>
+                        <span class="text-lg text-gray-600">Average Score: ${averageScore.toFixed(1)}</span>
                     </div>
-                    <p class="text-gray-600">${getGradeDescription(grade)}</p>
+                    <p class="text-gray-600 text-sm">${getGradeDescription(grade)}</p>
                 </div>
                 
-                <div class="space-y-4">
-                    <h3 class="text-xl font-semibold mb-4">Your Picks:</h3>
-                    ${pickGrades.map(pick => `
-                        <div class="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <span class="font-semibold text-lg">${pick.pick}.</span>
-                                    <span class="ml-2 text-lg">${pick.player}</span>
-                                    <span class="text-gray-600 ml-2">${pick.position}</span>
-                                    <span class="text-gray-600 ml-2">${pick.school}</span>
+                <div class="max-h-[60vh] overflow-y-auto">
+                    <h3 class="text-lg font-semibold mb-3">Your Picks:</h3>
+                    <div class="space-y-3">
+                        ${pickGrades.map(pick => `
+                            <div class="p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="font-semibold">${pick.pick}.</span>
+                                        <span class="ml-2">${pick.player}</span>
+                                        <span class="text-gray-600 ml-2">${pick.position}</span>
+                                        <span class="text-gray-600 ml-2">${pick.school}</span>
+                                    </div>
+                                    <span class="font-semibold">Score: ${pick.score}</span>
                                 </div>
-                                <span class="font-semibold text-lg">Score: ${pick.score}</span>
                             </div>
-                        </div>
-                    `).join('')}
+                        `).join('')}
+                    </div>
                 </div>
             </div>
         `;
