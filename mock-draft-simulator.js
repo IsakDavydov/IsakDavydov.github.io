@@ -467,6 +467,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('=== IN SIMULATE AI PICKS ===');
         console.log('Current state:', { currentPick, isUserTurn });
         
+        // If we've reached the end of the draft (257 total picks)
+        if (currentPick > 257) {
+            console.log('End of draft reached');
+            endDraft();
+            return;
+        }
+        
         // Find the current team's next pick
         const currentTeamData = teams.find(t => t.name === currentTeam);
         if (!currentTeamData) {
@@ -479,15 +486,90 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextUserPick = currentTeamData.pick + ((currentRound) * 32);
         console.log('Current pick:', currentPick, 'Current round:', currentRound, 'Next user pick:', nextUserPick);
         
-        // If we've reached the end of the draft (257 total picks)
-        if (currentPick > 257) {
-            console.log('End of draft reached');
-            return;
-        }
-        
         console.log('Calling simulateNextAIPicks...');
         // Simulate AI picks until next user pick
         simulateNextAIPicks(nextUserPick);
+    }
+
+    function endDraft() {
+        console.log('Ending draft and calculating grade');
+        isUserTurn = false;
+        updateDraftStatus();
+        
+        // Get all user picks
+        const userPicks = draftPicks.filter(pick => pick.team === currentTeam);
+        
+        // Calculate grade based on picks
+        let totalScore = 0;
+        const pickGrades = userPicks.map((pick, index) => {
+            // Base score is 100 minus the pick number
+            let score = 100 - (index + 1);
+            
+            // Bonus points for top prospects
+            if (pick.overallRank <= 5) {
+                score += 20;
+            }
+            
+            // Bonus points for filling team needs
+            const team = teams.find(t => t.name === currentTeam);
+            if (team.needs.includes(pick.position)) {
+                score += 10;
+            }
+            
+            totalScore += score;
+            
+            return {
+                pick: index + 1,
+                player: pick.name,
+                position: pick.position,
+                school: pick.school,
+                score: score
+            };
+        });
+        
+        // Calculate final grade
+        const averageScore = totalScore / userPicks.length;
+        let grade = 'F';
+        if (averageScore >= 90) grade = 'A';
+        else if (averageScore >= 80) grade = 'B';
+        else if (averageScore >= 70) grade = 'C';
+        else if (averageScore >= 60) grade = 'D';
+        
+        // Display results
+        const resultsContainer = document.createElement('div');
+        resultsContainer.className = 'mt-8 p-6 bg-white rounded-lg shadow';
+        resultsContainer.innerHTML = `
+            <h2 class="text-2xl font-bold mb-4">Draft Results</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">Final Grade: ${grade}</h3>
+                <p class="text-gray-600">Average Score: ${averageScore.toFixed(1)}</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Your Picks:</h3>
+                ${pickGrades.map(pick => `
+                    <div class="p-4 border rounded">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-semibold">${pick.pick}.</span>
+                                <span class="ml-2">${pick.player}</span>
+                                <span class="text-gray-600 ml-2">${pick.position}</span>
+                                <span class="text-gray-600 ml-2">${pick.school}</span>
+                            </div>
+                            <span class="font-semibold">Score: ${pick.score}</span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        
+        // Clear existing content and show results
+        teamInfo.innerHTML = '';
+        teamInfo.appendChild(resultsContainer);
+        
+        // Disable draft controls
+        startDraftBtn.disabled = true;
+        saveDraftBtn.disabled = true;
+        playerSearch.disabled = true;
     }
 
     function simulateNextAIPicks(nextUserPick) {
