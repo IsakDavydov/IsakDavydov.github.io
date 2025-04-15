@@ -585,10 +585,23 @@ document.addEventListener('DOMContentLoaded', () => {
         playerSearch.disabled = true;
     }
 
-    function simulateNextAIPicks(nextUserPick) {
+    async function simulateNextAIPicks(nextUserPick) {
         console.log('=== IN SIMULATE NEXT AI PICKS ===');
         console.log('Current state:', { currentPick, isUserTurn, nextUserPick });
         
+        // Check if we've reached the end of the draft (pick 257)
+        if (currentPick > 257) {
+            console.log('Draft complete - reached pick 257');
+            endDraft();
+            return;
+        }
+
+        // If it's the user's turn, stop and wait for their pick
+        if (isUserTurn) {
+            console.log('Reached user pick, setting isUserTurn to true');
+            return;
+        }
+
         if (currentPick >= nextUserPick) {
             console.log('Reached user pick, setting isUserTurn to true');
             isUserTurn = true;
