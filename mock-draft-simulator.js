@@ -179,11 +179,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const teamNeeds = team.needs;
         
         // First, check if any top prospects are available
-        const topProspects = availablePlayers.filter(player => player.overallRank <= 5);
+        const topProspects = availablePlayers.filter(player => {
+            // Include more players in top prospects list
+            return player.overallRank <= 10 || // Top 10 overall
+                   (player.rank <= 2 && currentPick <= 32) || // Top 2 at position in first round
+                   (player.rank <= 3 && currentPick <= 64); // Top 3 at position in first two rounds
+        });
+        
         if (topProspects.length > 0) {
             // Sort by overall rank and pick the best available
             topProspects.sort((a, b) => a.overallRank - b.overallRank);
-            const selectedPlayer = topProspects[0];
+            
+            // Add randomness to top prospect selection
+            let selectedPlayer;
+            if (currentPick <= 10) {
+                // Very high chance to take best available in top 10
+                selectedPlayer = Math.random() < 0.9 ? topProspects[0] : 
+                               Math.random() < 0.8 ? topProspects[1] : topProspects[2];
+            } else if (currentPick <= 32) {
+                // High chance to take best available in first round
+                selectedPlayer = Math.random() < 0.8 ? topProspects[0] : 
+                               Math.random() < 0.7 ? topProspects[1] : topProspects[2];
+            } else {
+                // More randomness in later rounds
+                const randomFactor = Math.random();
+                if (randomFactor < 0.6) {
+                    selectedPlayer = topProspects[0];
+                } else if (randomFactor < 0.85) {
+                    selectedPlayer = topProspects[1] || topProspects[0];
+                } else {
+                    selectedPlayer = topProspects[2] || topProspects[0];
+                }
+            }
+            
             console.log('AI selected top prospect:', selectedPlayer.name);
             
             // Add pick to draft board with all player data
@@ -219,7 +247,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fallingPlayers.length > 0) {
             // Sort by position rank and pick the best falling player
             fallingPlayers.sort((a, b) => a.rank - b.rank);
-            const selectedPlayer = fallingPlayers[0];
+            
+            // Add randomness to falling player selection
+            let selectedPlayer;
+            const randomFactor = Math.random();
+            if (randomFactor < 0.7) {
+                selectedPlayer = fallingPlayers[0];
+            } else if (randomFactor < 0.9) {
+                selectedPlayer = fallingPlayers[1] || fallingPlayers[0];
+            } else {
+                selectedPlayer = fallingPlayers[2] || fallingPlayers[0];
+            }
+            
             console.log('AI selected falling player:', selectedPlayer.name);
             
             // Add pick to draft board with all player data
@@ -268,7 +307,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mappedNeeds.includes(player.position)
         );
         
-        if (availablePlayersForTeam.length > 0) {
+        // Add chance to take best available player regardless of need
+        const takeBestAvailable = Math.random() < 0.3; // 30% chance to take best available
+        
+        if (availablePlayersForTeam.length > 0 && !takeBestAvailable) {
             // Sort by position rank
             availablePlayersForTeam.sort((a, b) => a.rank - b.rank);
             
@@ -278,19 +320,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Always take best available for top 3 picks
                 selectedPlayer = availablePlayersForTeam[0];
             } else {
-                // For picks after top 3, introduce variability
-                const topThreePlayers = availablePlayersForTeam.slice(0, 3);
+                // For picks after top 3, introduce more variability
+                const topFivePlayers = availablePlayersForTeam.slice(0, 5);
                 const randomFactor = Math.random();
                 
-                if (randomFactor < 0.6) {
-                    // 60% chance to take best available
+                if (randomFactor < 0.5) {
+                    // 50% chance to take best available
                     selectedPlayer = availablePlayersForTeam[0];
-                } else if (randomFactor < 0.85) {
+                } else if (randomFactor < 0.75) {
                     // 25% chance to take second best
                     selectedPlayer = availablePlayersForTeam[1] || availablePlayersForTeam[0];
-                } else {
+                } else if (randomFactor < 0.9) {
                     // 15% chance to take third best
                     selectedPlayer = availablePlayersForTeam[2] || availablePlayersForTeam[0];
+                } else {
+                    // 10% chance to take fourth or fifth best
+                    selectedPlayer = availablePlayersForTeam[3] || availablePlayersForTeam[4] || availablePlayersForTeam[0];
                 }
             }
             
@@ -315,8 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updateAvailablePlayersTable();
             updateDraftStatus();
         } else {
-            // If no players match team needs, take best available player regardless of position
-            console.log('No players match team needs, taking best available player');
+            // Take best available player regardless of position
+            console.log('Taking best available player regardless of position');
             const bestAvailable = [...availablePlayers].sort((a, b) => a.rank - b.rank)[0];
             
             if (bestAvailable) {
