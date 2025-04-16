@@ -109,18 +109,18 @@
                     </select>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full">
-                        <thead class="bg-gray-800 text-white">
-                            <tr>
-                                <th class="px-4 py-3 text-left">Position Rank</th>
-                                <th class="px-4 py-3 text-left">Name</th>
-                                <th class="px-4 py-3 text-left">Position</th>
-                                <th class="px-4 py-3 text-left">College</th>
-                                <th class="px-4 py-3 text-left">Actions</th>
+                    <table id="available-players" class="min-w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-4 py-2 border-b">Rank</th>
+                                <th class="px-4 py-2 border-b">Name</th>
+                                <th class="px-4 py-2 border-b">Position</th>
+                                <th class="px-4 py-2 border-b">School</th>
+                                <th class="px-4 py-2 border-b">Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="available-players" class="divide-y divide-gray-200">
-                            <!-- Players will be populated by JavaScript -->
+                        <tbody>
+                            <!-- Player rows will be inserted here -->
                         </tbody>
                     </table>
                 </div>

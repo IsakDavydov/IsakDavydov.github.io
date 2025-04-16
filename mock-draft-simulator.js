@@ -543,6 +543,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateAvailablePlayersTable(players = availablePlayers) {
         console.log('Updating available players table with:', players);
         const tbody = availablePlayersTable.querySelector('tbody');
+        if (!tbody) {
+            console.error('Table body not found');
+            return;
+        }
+        
         tbody.innerHTML = '';
         
         players.forEach(player => {
