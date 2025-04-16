@@ -112,6 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         filterPlayers();
     });
 
+    // Add event listener for position filter
+    document.getElementById('position-filter').addEventListener('change', () => {
+        filterPlayers();
+    });
+
     // Functions
     function startDraft() {
         console.log('Starting draft for team:', teamSelect.value);
@@ -239,10 +244,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Map team needs to player positions
+        // Map team needs to player positions with special handling for DL and EDGE
         const mappedNeeds = teamNeeds.map(need => {
             if (need === 'IOL') return ['OG', 'C'];
-            if (need === 'DL') return ['DT', 'DE'];
+            if (need === 'DL') {
+                // For DL needs, prioritize DT and EDGE based on team's specific needs
+                const hasDTNeed = teamNeeds.includes('DT');
+                const hasEDGENeed = teamNeeds.includes('EDGE');
+                if (hasDTNeed && hasEDGENeed) {
+                    return ['DT', 'EDGE'];
+                } else if (hasDTNeed) {
+                    return ['DT'];
+                } else if (hasEDGENeed) {
+                    return ['EDGE'];
+                }
+                return ['DT', 'EDGE'];
+            }
             return [need];
         }).flat();
         
@@ -403,11 +420,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterPlayers() {
         console.log('Filtering players with search term:', playerSearch.value);
         const searchTerm = playerSearch.value.toLowerCase();
-        const filteredPlayers = availablePlayers.filter(player => 
-            player.name.toLowerCase().includes(searchTerm) ||
-            player.position.toLowerCase().includes(searchTerm) ||
-            player.school.toLowerCase().includes(searchTerm)
-        );
+        const positionFilter = document.getElementById('position-filter').value;
+        
+        const filteredPlayers = availablePlayers.filter(player => {
+            const matchesSearch = player.name.toLowerCase().includes(searchTerm) ||
+                                player.position.toLowerCase().includes(searchTerm) ||
+                                player.school.toLowerCase().includes(searchTerm);
+            const matchesPosition = !positionFilter || player.position === positionFilter;
+            return matchesSearch && matchesPosition;
+        });
         updateAvailablePlayersTable(filteredPlayers);
     }
 
