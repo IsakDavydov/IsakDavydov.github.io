@@ -117,6 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filterPlayers();
     });
 
+    // Add event listener for simulate rest button
+    document.getElementById('simulate-rest').addEventListener('click', () => {
+        console.log('Simulate rest button clicked');
+        simulateRest();
+    });
+
     // Functions
     function startDraft() {
         console.log('Starting draft for team:', teamSelect.value);
@@ -891,4 +897,67 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Closing analysis modal');
         document.getElementById('analysis-modal').classList.add('hidden');
     };
+
+    function simulateRest() {
+        if (!currentTeam) {
+            alert('Please select a team and start the draft first');
+            return;
+        }
+
+        // Disable buttons during simulation
+        document.getElementById('simulate-rest').disabled = true;
+        document.getElementById('start-draft').disabled = true;
+        document.getElementById('save-draft').disabled = true;
+        document.getElementById('reset-draft').disabled = true;
+
+        // Update status
+        draftStatus.textContent = 'Simulating rest of draft...';
+        draftStatus.classList.remove('hidden');
+
+        function simulateNextPick() {
+            if (currentPick > 257) {
+                // Draft is complete
+                draftStatus.textContent = 'Draft Complete!';
+                document.getElementById('simulate-rest').disabled = false;
+                document.getElementById('start-draft').disabled = false;
+                document.getElementById('save-draft').disabled = false;
+                document.getElementById('reset-draft').disabled = false;
+                return;
+            }
+
+            const team = teams.find(t => t.pick === currentPick);
+            if (team) {
+                if (team.name === currentTeam) {
+                    // It's user's turn - pick best available player
+                    const bestPlayer = availablePlayers[0];
+                    if (bestPlayer) {
+                        draftPicks.push({
+                            team: team.name,
+                            name: bestPlayer.name,
+                            position: bestPlayer.position,
+                            school: bestPlayer.school,
+                            rank: bestPlayer.rank,
+                            height: bestPlayer.height,
+                            weight: bestPlayer.weight
+                        });
+                        availablePlayers = availablePlayers.filter(p => p.name !== bestPlayer.name);
+                        updateDraftBoard();
+                        updateAvailablePlayersTable();
+                    }
+                } else {
+                    // AI's turn
+                    makeAIPick(team);
+                }
+            }
+            
+            currentPick++;
+            updateDraftStatus();
+            
+            // Continue simulation with a small delay
+            setTimeout(simulateNextPick, 50);
+        }
+
+        // Start simulation
+        simulateNextPick();
+    }
 }); 
