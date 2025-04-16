@@ -1,0 +1,292 @@
+{
+    "picks": [
+        {
+            "pick": 1,
+            "team": "Tennessee Titans",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 2,
+            "team": "Cleveland Browns",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 3,
+            "team": "New York Giants",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 4,
+            "team": "New England Patriots",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 5,
+            "team": "Jacksonville Jaguars",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 6,
+            "team": "Las Vegas Raiders",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 7,
+            "team": "New York Jets",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 8,
+            "team": "Carolina Panthers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 9,
+            "team": "New Orleans Saints",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 10,
+            "team": "Chicago Bears",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 11,
+            "team": "San Francisco 49ers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 12,
+            "team": "Dallas Cowboys",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 13,
+            "team": "Miami Dolphins",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 14,
+            "team": "Indianapolis Colts",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 15,
+            "team": "Atlanta Falcons",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 16,
+            "team": "Arizona Cardinals",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 17,
+            "team": "Cincinnati Bengals",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 18,
+            "team": "Seattle Seahawks",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 19,
+            "team": "Tampa Bay Buccaneers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 20,
+            "team": "Denver Broncos",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 21,
+            "team": "Pittsburgh Steelers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 22,
+            "team": "Los Angeles Chargers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 23,
+            "team": "Green Bay Packers",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 24,
+            "team": "Minnesota Vikings",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 25,
+            "team": "Houston Texans",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 26,
+            "team": "Los Angeles Rams",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 27,
+            "team": "Baltimore Ravens",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 28,
+            "team": "Detroit Lions",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 29,
+            "team": "Washington Commanders",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 30,
+            "team": "Buffalo Bills",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 31,
+            "team": "Kansas City Chiefs",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        },
+        {
+            "pick": 32,
+            "team": "Philadelphia Eagles",
+            "player": {
+                "name": "Player Name",
+                "position": "Position",
+                "school": "School"
+            }
+        }
+    ]
+} 
