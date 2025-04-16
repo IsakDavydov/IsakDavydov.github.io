@@ -542,29 +542,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateAvailablePlayersTable(players = availablePlayers) {
         console.log('Updating available players table with:', players);
-        availablePlayersTable.innerHTML = '';
+        const tbody = availablePlayersTable.querySelector('tbody');
+        tbody.innerHTML = '';
+        
         players.forEach(player => {
             const row = document.createElement('tr');
-            row.className = 'hover:bg-gray-50';
+            row.className = 'hover:bg-gray-100';
+            
             row.innerHTML = `
-                <td class="px-4 py-3">${player.rank}</td>
-                <td class="px-4 py-3">${player.name}</td>
-                <td class="px-4 py-3">${player.position}</td>
-                <td class="px-4 py-3">${player.school}</td>
-                <td class="px-4 py-3">
-                    <div class="space-y-2">
-                        <button onclick="draftPlayer('${player.name}', '${player.position}', '${player.school}')" 
-                                class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors">
-                            Draft
-                        </button>
-                        <div class="text-sm text-gray-600">
-                            <p class="font-medium">Physical:</p>
-                            <p class="text-xs">${player.height}, ${player.weight}</p>
-                        </div>
-                    </div>
+                <td class="px-4 py-2">${player.rank}</td>
+                <td class="px-4 py-2">${player.name}</td>
+                <td class="px-4 py-2">${player.position}</td>
+                <td class="px-4 py-2">${player.school}</td>
+                <td class="px-4 py-2">
+                    <button onclick="draftPlayer('${player.name}')" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                        Draft
+                    </button>
                 </td>
             `;
-            availablePlayersTable.appendChild(row);
+            
+            tbody.appendChild(row);
         });
     }
 
@@ -819,9 +816,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Global functions for draft actions
-    window.draftPlayer = function(name, position, school) {
+    window.draftPlayer = function(playerName) {
         console.log('=== STARTING DRAFT PLAYER ===');
-        console.log('Drafting player:', { name, position, school });
+        console.log('Drafting player:', { playerName });
         console.log('Current state:', { currentTeam, currentPick, isUserTurn });
         
         if (!currentTeam) {
@@ -834,9 +831,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Find the player in availablePlayers to get all their data
-        const player = availablePlayers.find(p => p.name === name);
+        const player = availablePlayers.find(p => p.name === playerName);
         if (!player) {
-            console.error('Player not found in availablePlayers:', name);
+            console.error('Player not found in availablePlayers:', playerName);
             return;
         }
         
@@ -852,7 +849,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Remove the selected player from available players
-        availablePlayers = availablePlayers.filter(p => p.name !== name);
+        availablePlayers = availablePlayers.filter(p => p.name !== playerName);
         
         // Update UI
         updateDraftBoard();
