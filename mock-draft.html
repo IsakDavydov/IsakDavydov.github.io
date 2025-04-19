@@ -22,9 +22,19 @@
 
     <main class="container mx-auto p-4">
         <div class="mb-6">
-            <h2 class="text-3xl font-bold" id="mock-draft-title"></h2>
-            <p class="text-gray-600" id="mock-draft-author"></p>
-            <p class="text-gray-600" id="mock-draft-date"></p>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold" id="mock-draft-title"></h2>
+                    <p class="text-gray-600" id="mock-draft-author"></p>
+                    <p class="text-gray-600" id="mock-draft-date"></p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <label for="version-select" class="text-gray-700">Version:</label>
+                    <select id="version-select" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Version options will be populated here -->
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="overflow-x-auto">
@@ -47,6 +57,9 @@
     </main>
 
     <script>
+        let mockDrafts = [];
+        let currentVersion = null;
+
         // Load mock draft data
         console.log('Starting to load mock draft data...');
         fetch('data/mock-drafts.json?v=' + new Date().getTime())
@@ -74,52 +87,34 @@
                     throw new Error('No mock drafts found');
                 }
                 
-                const mockDraft = data.mockDrafts[0];
-                console.log('First mock draft:', mockDraft);
+                mockDrafts = data.mockDrafts;
                 
-                // Set mock draft details
-                document.getElementById('mock-draft-title').textContent = mockDraft.name;
-                document.getElementById('mock-draft-author').textContent = `By ${mockDraft.author}`;
-                document.getElementById('mock-draft-date').textContent = `Published: ${mockDraft.date}`;
-                
-                // Populate mock draft table
-                const tableBody = document.getElementById('mock-draft-body');
-                if (mockDraft.picks && Array.isArray(mockDraft.picks)) {
-                    console.log('Number of picks:', mockDraft.picks.length);
-                    mockDraft.picks.forEach((pick, index) => {
-                        const row = document.createElement('tr');
-                        row.className = 'hover:bg-gray-50';
-                        
-                        const pickElement = document.createElement('div');
-                        pickElement.className = 'bg-white rounded-lg shadow-md p-4 mb-4';
-                        pickElement.innerHTML = `
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="text-lg font-semibold">${pick.team}</h3>
-                                    <p class="text-gray-600">${pick.player}</p>
-                                    <p class="text-sm text-gray-500">${pick.position} - ${pick.college}</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-sm text-gray-500">${pick.round}</p>
-                                </div>
-                            </div>
-                            <p class="mt-2 text-gray-700">${pick.explanation}</p>
-                        `;
-                        
-                        row.innerHTML = `
-                            <td class="px-6 py-4">${index + 1}</td>
-                            <td class="px-6 py-4">${pick.team}</td>
-                            <td class="px-6 py-4">${pick.player}</td>
-                            <td class="px-6 py-4">${pick.position}</td>
-                            <td class="px-6 py-4">${pick.college}</td>
-                            <td class="px-6 py-4">${pick.explanation}</td>
-                        `;
-                        
-                        tableBody.appendChild(row);
-                    });
-                } else {
-                    throw new Error('Invalid picks data');
+                // Find the latest version
+                const latestDraft = mockDrafts.find(draft => draft.isLatest);
+                if (!latestDraft) {
+                    throw new Error('No latest version found');
                 }
+                currentVersion = latestDraft.version;
+                
+                // Populate version selector
+                const versionSelect = document.getElementById('version-select');
+                mockDrafts.forEach(draft => {
+                    const option = document.createElement('option');
+                    option.value = draft.version;
+                    option.textContent = `Version ${draft.version} (${draft.date})`;
+                    if (draft.version === currentVersion) {
+                        option.selected = true;
+                    }
+                    versionSelect.appendChild(option);
+                });
+                
+                // Load the latest version
+                loadMockDraft(currentVersion);
+                
+                // Add event listener for version changes
+                versionSelect.addEventListener('change', (e) => {
+                    loadMockDraft(e.target.value);
+                });
             })
             .catch(error => {
                 console.error('Error loading mock draft data:', error);
@@ -133,6 +128,44 @@
                     </tr>
                 `;
             });
+            
+        function loadMockDraft(version) {
+            const mockDraft = mockDrafts.find(draft => draft.version === version);
+            if (!mockDraft) {
+                console.error('Mock draft version not found:', version);
+                return;
+            }
+            
+            // Set mock draft details
+            document.getElementById('mock-draft-title').textContent = mockDraft.name;
+            document.getElementById('mock-draft-author').textContent = `By ${mockDraft.author}`;
+            document.getElementById('mock-draft-date').textContent = `Published: ${mockDraft.date}`;
+            
+            // Populate mock draft table
+            const tableBody = document.getElementById('mock-draft-body');
+            tableBody.innerHTML = ''; // Clear existing content
+            
+            if (mockDraft.picks && Array.isArray(mockDraft.picks)) {
+                console.log('Number of picks:', mockDraft.picks.length);
+                mockDraft.picks.forEach((pick, index) => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-gray-50';
+                    
+                    row.innerHTML = `
+                        <td class="px-6 py-4">${index + 1}</td>
+                        <td class="px-6 py-4">${pick.team}</td>
+                        <td class="px-6 py-4">${pick.player}</td>
+                        <td class="px-6 py-4">${pick.position}</td>
+                        <td class="px-6 py-4">${pick.college}</td>
+                        <td class="px-6 py-4">${pick.explanation}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+            } else {
+                throw new Error('Invalid picks data');
+            }
+        }
     </script>
 </body>
 </html> 
