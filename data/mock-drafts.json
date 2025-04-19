@@ -2,8 +2,10 @@
     "mockDrafts": [
         {
             "name": "2025 NFL Mock Draft 1.0",
+            "version": "1.0",
             "author": "Saks Draft Hub",
-            "date": "March 2024",
+            "date": "April 10, 2024",
+            "isLatest": false,
             "picks": [
                 {
                     "team": "Tennessee Titans",
@@ -228,6 +230,239 @@
                     "position": "S",
                     "college": "Georgia",
                     "explanation": "Starks' combination of coverage skills and physicality makes him the perfect safety for the Eagles' defense."
+                }
+            ]
+        },
+        {
+            "name": "2025 NFL Mock Draft 2.0",
+            "version": "2.0",
+            "author": "Saks Draft Hub",
+            "date": "April 17, 2024",
+            "isLatest": true,
+            "picks": [
+                {
+                    "team": "Tennessee Titans",
+                    "player": "Cam Ward",
+                    "position": "QB",
+                    "college": "Miami",
+                    "explanation": "The Titans need a franchise QB desperately and Cam Ward falls in their lap at #1. He has an incredible arm and can make plays all over the field."
+                },
+                {
+                    "team": "Cleveland Browns",
+                    "player": "Travis Hunter",
+                    "position": "WR/CB",
+                    "college": "Colorado",
+                    "explanation": "The best player in the draft lands at #2 to the Browns. He should start and immediately contribute on both ends of the ball. They get two positions filled with one pick."
+                },
+                {
+                    "team": "New York Giants",
+                    "player": "Abdul Carter",
+                    "position": "EDGE",
+                    "college": "Penn State",
+                    "explanation": "Carter is the best EDGE in the class and has all-pro potential. He is dominant on the defensive line and stepped up for Penn State all season."
+                },
+                {
+                    "team": "Chicago Bears",
+                    "player": "Ashton Jeanty",
+                    "position": "RB",
+                    "college": "Boise State",
+                    "explanation": "Ashton Jeanty is the second best player in this draft for me. Ben Johnson has shown he knows how to utilize star RBs before and he will get another chance in Chicago. I have never seen defenders bounce off of a player the way they bounce off Jeanty. He has the best contact balance I have ever seen and he has 1500 yard potential right out of the gate."
+                },
+                {
+                    "team": "Jacksonville Jaguars",
+                    "player": "Mason Graham",
+                    "position": "DT",
+                    "college": "Michigan",
+                    "explanation": "Dominant run and pass defender. He led arguably the most dominant defense line in the nation last season. He fills a massive need for the Jaguars on the interior."
+                },
+                {
+                    "team": "Las Vegas Raiders",
+                    "player": "Armand Membou",
+                    "position": "OT",
+                    "college": "Missouri",
+                    "explanation": "The Raiders need to protect Geno Smith so he can thrive in Vegas and Membou seems to be climbing draft boards around the league."
+                },
+                {
+                    "team": "New York Jets",
+                    "player": "Tyler Warren",
+                    "position": "TE",
+                    "college": "Penn State",
+                    "explanation": "The Jets passed on Brock Bowers last year and this is their chance to still get a stud TE and offensive weapon in the draft. Warren can play RB/FB if you need him to and can even throw the ball. Swiss Army knife for a good offensive coordinator."
+                },
+                {
+                    "team": "Carolina Panthers",
+                    "player": "Tetairoa McMillan",
+                    "position": "WR",
+                    "college": "Arizona",
+                    "explanation": "The Panthers get Bryce Young a big body X style receiver to help him continue to develop. Mcmillan is has a huge range of outcomes for me, but he has the most potential out of any WR in the class."
+                },
+                {
+                    "team": "New Orleans Saints",
+                    "player": "Will Campbell",
+                    "position": "OT",
+                    "college": "LSU",
+                    "explanation": "Ryan Ramczyk just retired and the Saints need help on the offensive line regardless. Campbell is a stud and his 'short arms' shouldn't be an issue for someone as technically sound as him. He stays in Louisiana."
+                },
+                {
+                    "team": "New England Patriots",
+                    "player": "Jalon Walker",
+                    "position": "LB",
+                    "college": "Georgia",
+                    "explanation": "In this scenario the Patriots trade back and get a huge asset for their defense. Walker is extremely versatile but will probably end up settling down as a pass rusher who can drop and play QB spy if needed."
+                },
+                {
+                    "team": "San Francisco 49ers",
+                    "player": "Kelvin Banks Jr.",
+                    "position": "OT",
+                    "college": "Texas",
+                    "explanation": "Banks is a stud tackle who always played well in Texas's biggest games. The niners need to upgrade their line and protect Purdy if they want to content."
+                },
+                {
+                    "team": "Dallas Cowboys",
+                    "player": "Omarion Hampton",
+                    "position": "RB",
+                    "college": "UNC",
+                    "explanation": "Hampton is the second best back in the class but still ends up going 12th overall. He is very strong and can contribute heavily in the passing game. This is a great spot for Hampton to become a top RB."
+                },
+                {
+                    "team": "Miami Dolphins",
+                    "player": "Will Johnson",
+                    "position": "CB",
+                    "college": "Michigan",
+                    "explanation": "With Jalen Ramsey now potentially on the move, the fins decide to shore up their secondary. Johnson is the best pure corner in the draft and would've been taken higher if not for injury concerns."
+                },
+                {
+                    "team": "Indianapolis Colts",
+                    "player": "Colston Loveland",
+                    "position": "TE",
+                    "college": "Michigan",
+                    "explanation": "Back to back Michigan players get selected. Loveland has been penciled in here for a while as I think the Colts want a TE and Warren should be off the board. He is mainly a receiving TE which has its value concerns in the NFL but I think he will help AR develop into a franchise QB."
+                },
+                {
+                    "team": "Atlanta Falcons",
+                    "player": "Mykel Williams",
+                    "position": "EDGE",
+                    "college": "Georgia",
+                    "explanation": "The Falcons finally take a pass rusher in the first round. Williams played hurt throughout most of last season and still looked dominant at times. He will immediately be the best player on their defensive line."
+                },
+                {
+                    "team": "Arizona Cardinals",
+                    "player": "Jihaad Campbell",
+                    "position": "LB",
+                    "college": "Alabama",
+                    "explanation": "The Cardinals get the best linebacker in the class and hope to revamp their LB core. Campbell came in as a pass rusher and can help all over the defense."
+                },
+                {
+                    "team": "Cincinnati Bengals",
+                    "player": "Walter Nolan",
+                    "position": "DT",
+                    "college": "Ole Miss",
+                    "explanation": "Nolan entered college as the number one prospect in the class and has huge upside potential. Cincinnati needs defense and this is a good prospect to wing on."
+                },
+                {
+                    "team": "Seattle Seahawks",
+                    "player": "Grey Zabel",
+                    "position": "OG",
+                    "college": "North Dakota State",
+                    "explanation": "Zabel really boosted his draft stock in the senior bowl when he performed exceptionally in the one on one drills. He played against weaker competition but I think he'll have no problem developing well in the league."
+                },
+                {
+                    "team": "Tampa Bay Buccaneers",
+                    "player": "Jahdae Barron",
+                    "position": "CB",
+                    "college": "Texas",
+                    "explanation": "Barron is a great corner prospect and won the Jim Thorpe award this past season. He figures to fit in as a slot corner so I have him falling here to 19."
+                },
+                {
+                    "team": "Denver Broncos",
+                    "player": "Matthew Golden",
+                    "position": "WR",
+                    "college": "Texas",
+                    "explanation": "Golden had the fastest 40 yard dash by a WR at the combine this year. He played very well for Texas down the stretch and can be a good deep threat in the league. I didn't see enough out of him to say he can be a number one."
+                },
+                {
+                    "team": "Pittsburgh Steelers",
+                    "player": "Shedeur Sanders",
+                    "position": "QB",
+                    "college": "Colorado",
+                    "explanation": "Sanders falls here to Pittsburgh where he can immediately start or develop under Aaron Rodgers if he signs. I think he can be a productive quarterback for a long time. He is super accurate and just needs to work on getting the ball out sooner."
+                },
+                {
+                    "team": "Los Angeles Chargers",
+                    "player": "Kenneth Grant",
+                    "position": "DT",
+                    "college": "Michigan",
+                    "explanation": "Grant is a stud and was overshadowed by Mason Graham this season. He is a great run stuffing DT which is a big need for the Chargers right now. He also gets to reunite with his old head coach, Jim Harbaugh."
+                },
+                {
+                    "team": "Green Bay Packers",
+                    "player": "Josh Simmons",
+                    "position": "OT",
+                    "college": "Ohio State",
+                    "explanation": "Simmons started the season playing at a very high level. He may have been the first offensive lineman off the board had he not sustained a leg injury this season."
+                },
+                {
+                    "team": "Minnesota Vikings",
+                    "player": "Benjamin Morrison",
+                    "position": "CB",
+                    "college": "Notre Dame",
+                    "explanation": "Great corner who had his season cut short due to injury. He has great instincts and technique and can be a great outside corner. This continues the Vikings tradition of taking a first round corner."
+                },
+                {
+                    "team": "Houston Texans",
+                    "player": "Tyler Booker",
+                    "position": "OG",
+                    "college": "Alabama",
+                    "explanation": "Texans need help on the interior and Booker figures to be the best pure guard in the class. He played in the SEC and stood his own against serious talent, he'll be a good player."
+                },
+                {
+                    "team": "Los Angeles Rams",
+                    "player": "Malaki Starks",
+                    "position": "S",
+                    "college": "Georgia",
+                    "explanation": "The Rams continue to build their young defense by adding the best safety in the class. He isn't a top athlete but he has great football IQ and makes every play he needs to."
+                },
+                {
+                    "team": "Baltimore Ravens",
+                    "player": "Mike Green",
+                    "position": "EDGE",
+                    "college": "Marshall",
+                    "explanation": "This is a steal for the Ravens who get Green who led FBS in sacks last year with 17. He can also hold his own against the run so I think he's going to be a great player."
+                },
+                {
+                    "team": "Detroit Lions",
+                    "player": "James Pearce Jr.",
+                    "position": "EDGE",
+                    "college": "Tennessee",
+                    "explanation": "Pearce went into the year as a projected top 10 player. His play fell off slightly and then concerns about his size arose, however he has great bend and can rush the passer very well. He will fit well alongside Aidan Hutchinson."
+                },
+                {
+                    "team": "Washington Commanders",
+                    "player": "Maxwell Hairston",
+                    "position": "CB",
+                    "college": "Kentucky",
+                    "explanation": "Hairston ran the fastest 40 at the combine and is a ball hawk. He can keep up with any receiver and fills in a big need for the Commanders."
+                },
+                {
+                    "team": "Buffalo Bills",
+                    "player": "Luther Burden",
+                    "position": "WR",
+                    "college": "Missouri",
+                    "explanation": "The Bills take another receiver in Luther Burden to help Josh Allen. Burden's stock dropped a bit this season because his numbers dipped, but that was due to poor quarterback play and play calling. He is dangerous with the ball in his hands."
+                },
+                {
+                    "team": "Kansas City Chiefs",
+                    "player": "Josh Conerly Jr.",
+                    "position": "OT",
+                    "college": "Oregon",
+                    "explanation": "The Chiefs clearly are looking to take an offensive lineman early in the draft after the disaster of a Super Bowl they had. Conerly is my best tackle in the board. He had a great season at Oregon this year and has good size at the position."
+                },
+                {
+                    "team": "Philadelphia Eagles",
+                    "player": "Shemar Stewart",
+                    "position": "DT",
+                    "college": "Texas A&M",
+                    "explanation": "Stewart earned a 9.99 RAW score at the combine this year. His numbers were disappointing with only 1.5 sacks, but his size, speed and strength are enough for the Eagles to take a shot and develop another superstar."
                 }
             ]
         }
